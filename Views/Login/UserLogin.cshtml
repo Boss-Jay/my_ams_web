@@ -1,0 +1,122 @@
+﻿@using Ams_Web.Models
+@model userLogin_ViewModel
+
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-container">
+
+    <!-- LEFT BRANDING -->
+    <div class="login-brand">
+
+       @*  <div class="logo">
+            <i class="bi bi-chart-perforated"></i>
+        </div> *@
+
+        <h1>Accounting Monitoring System</h1>
+
+        <p>
+            Manage company expense records and BIR Reports.
+        </p>
+
+       @*  <div class="feature">
+
+            <div class="feature-item">
+                <i class="bi bi-lightning-charge"></i>
+                <span>Fast Ticket Management</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="bi bi-shield-check"></i>
+                <span>Secure Access</span>
+            </div>
+
+            <div class="feature-item">
+                <i class="bi bi-people"></i>
+                <span>Better Collaboration</span>
+            </div>
+
+        </div> *@
+
+    </div>
+
+
+    <!-- LOGIN FORM -->
+    <div class="login-form">
+
+        <h2>Sign In</h2>
+
+        <div class="login-subtitle">
+            Enter your username and password to continue.
+        </div>
+
+        <form asp-action="Login" onsubmit="event.preventDefault(); Login();" id="loginForm">
+
+            <!-- USERNAME -->
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-person"></i>
+                </span>
+
+                <input type="text"
+                       class="form-control"
+                       name="Username"
+                       placeholder="Username"
+                       required>
+            </div>
+
+
+            <!-- PASSWORD -->
+            <div class="input-group">
+                <span class="input-group-text">
+                    <i class="bi bi-lock"></i>
+                </span>
+
+                <input type="password"
+                       class="form-control"
+                       name="Password"
+                       id="password"
+                       placeholder="Password"
+                       required>
+
+                <button type="button"
+                        class="btn btn-outline-secondary"
+                        onclick="togglePassword()">
+                    <i class="bi bi-eye" id="passwordIcon"></i>
+                </button>
+            </div>
+
+
+            <!-- OPTIONS -->
+            <div class="d-flex justify-content-between
+                            align-items-center mb-4">
+
+
+                <a href="#" class="forgot">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <!-- LOGIN -->
+            <button type="submit"
+                    class="login-btn w-100">
+
+                <i class="bi bi-box-arrow-in-right me-2"></i>
+                Login
+
+            </button>
+
+        </form>
+
+        <div class="footer-text">
+            © 2026 AMS System
+        </div>
+
+    </div>
+
+</div>
+

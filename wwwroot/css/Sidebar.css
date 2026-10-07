@@ -1,0 +1,525 @@
+﻿:root {
+    --sidebar-width: 260px;
+    --sidebar-collapsed-width: 68px;
+    --sidebar-bg: #ffffff;
+    --sidebar-border: #e5e7eb;
+    --sidebar-hover: #f4f4f5;
+    --sidebar-active: #f1f5f9;
+    --sidebar-text: #27272a;
+    --sidebar-muted: #71717a;
+    --body-bg: #f8fafc;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--body-bg);
+}
+
+
+/* =========================================
+           SIDEBAR
+        ========================================= */
+
+.app-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: var(--sidebar-width);
+    height: 100vh;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--sidebar-border);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    transition: width .25s ease;
+    overflow: hidden;
+    background: #8571eb;
+    background: linear-gradient(90deg, rgba(133, 113, 235, 1) 0%, rgba(107, 107, 242, 1) 0%, rgba(100, 141, 237, 1) 75%, rgba(171, 223, 237, 1) 100%, rgba(74, 210, 237, 1) 100%);
+    border-right: 1px solid #dbe4f0;
+}
+
+
+/* =========================================
+           HEADER
+        ========================================= */
+
+.sidebar-header {
+    height: 64px;
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-bottom: 1px solid var(--sidebar-border);
+}
+
+
+.app-logo {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: linear-gradient( 135deg, #2563eb, #7c3aed );
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+
+.app-name {
+    margin-left: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+
+.sidebar-toggle {
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+
+    .sidebar-toggle:hover {
+        background: var(--sidebar-hover);
+    }
+
+
+/* =========================================
+           BRANCH SELECTOR
+        ========================================= */
+
+.branch-container {
+    padding: 12px 8px 8px;
+    border-bottom: 1px solid var(--sidebar-border);
+}
+
+
+.branch-label {
+    display: block;
+    padding: 0 8px 6px;
+    font-size: 10px;
+    font-weight: 600;
+    color: dimgrey;
+    letter-spacing: .08em;
+}
+
+
+.branch-selector {
+    position: relative;
+    width: 100%;
+}
+
+
+/* SELECTOR BUTTON */
+
+.branch-button {
+    width: 100%;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 9px;
+    border: 1px solid #dbe4f0;
+    border-radius: 8px;
+    background: linear-gradient( 135deg, rgba(255,255,255,.95), rgba(239,246,255,.95) );
+    color: #27272a;
+    cursor: pointer;
+    text-align: left;
+    transition: all .2s ease;
+}
+
+
+    .branch-button:hover {
+        border-color: #bfdbfe;
+        background: linear-gradient( 135deg, #eff6ff, #f5f3ff );
+        box-shadow: 0 4px 12px rgba(59, 130, 246, .10);
+    }
+
+
+/* BRANCH ICON */
+
+.branch-icon {
+    width: 31px;
+    height: 31px;
+    min-width: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    color: white;
+    background: linear-gradient( 135deg, #3b82f6, #8b5cf6 );
+    box-shadow: 0 3px 7px rgba(99, 102, 241, .20);
+}
+
+
+/* BRANCH TEXT */
+
+.branch-info {
+    flex: 1;
+    min-width: 0;
+}
+
+
+.branch-title {
+    display: block;
+    font-size: 12px;
+    color: #71717a;
+    margin-bottom: 1px;
+}
+
+
+.branch-name {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.branch-arrow {
+    font-size: 12px;
+    color: #71717a;
+}
+
+
+/* =========================================
+           BRANCH DROPDOWN
+        ========================================= */
+
+.branch-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    padding: 5px;
+    background: linear-gradient( 145deg, #ffffff, #f8fbff );
+    border: 1px solid #dbe4f0;
+    border-radius: 9px;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, .12);
+    display: none;
+    z-index: 3000;
+}
+
+
+    .branch-menu.open {
+        display: block;
+    }
+
+
+/* BRANCH OPTION */
+
+.branch-option {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: left;
+}
+
+
+    .branch-option:hover {
+        background: var(--sidebar-hover);
+    }
+
+
+.branch-option-icon {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f4f5;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+
+.branch-option-info {
+    flex: 1;
+    min-width: 0;
+}
+
+
+.branch-option-name {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+
+.branch-option-location {
+    font-size: 11px;
+    color: #71717a;
+}
+
+
+.branch-check {
+    display: none;
+    font-size: 14px;
+}
+
+.branch-option.selected {
+    background: linear-gradient( 135deg, #eff6ff, #f5f3ff );
+}
+
+
+    .branch-option.selected
+    .branch-option-icon {
+        color: white;
+        background: linear-gradient( 135deg, #2563eb, #7c3aed );
+    }
+.branch-option.selected .branch-check {
+    display: block;
+    background: linear-gradient( 135deg, #eff6ff, #f5f3ff );
+}
+
+
+/* =========================================
+           SIDEBAR CONTENT
+        ========================================= */
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px 8px;
+}
+
+
+/* =========================================
+           LABEL
+        ========================================= */
+
+.menu-label {
+    padding: 10px 10px 6px;
+    color: dimgray;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .08em;
+}
+
+
+/* =========================================
+           MENU ITEM
+        ========================================= */
+
+.sidebar-item {
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px;
+    margin-bottom: 2px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: var(--sidebar-text);
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+
+    .sidebar-item:hover {
+        background: linear-gradient( 135deg, #eff6ff, #f5f3ff );
+    }
+
+
+    .sidebar-item.active {
+        color: #1e40af;
+        font-weight: 600;
+        background: linear-gradient( 135deg, #dbeafe, #ede9fe );
+        box-shadow: inset 3px 0 0 #6366f1;
+    }
+
+
+    .sidebar-item > i:first-child {
+        width: 20px;
+        min-width: 20px;
+        font-size: 17px;
+        text-align: center;
+    }
+
+
+/* =========================================
+           DROPDOWN MENU
+        ========================================= */
+
+.sidebar-group {
+    width: 100%;
+}
+
+
+.sidebar-dropdown {
+    text-align: left;
+}
+
+
+.menu-arrow {
+    margin-left: auto;
+    font-size: 12px !important;
+    transition: transform .2s ease;
+}
+
+
+.sidebar-dropdown.open .menu-arrow {
+    transform: rotate(90deg);
+}
+
+
+/* =========================================
+           SUBMENU
+        ========================================= */
+
+.submenu {
+    display: none;
+    padding-left: 12px;
+}
+
+
+    .submenu.open {
+        display: block;
+    }
+
+
+.submenu-item {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px 8px 30px;
+    margin: 2px 0;
+    border-radius: 6px;
+    color: var(--sidebar-muted);
+    text-decoration: none;
+    font-size: 13px;
+}
+    .submenu-item.active {
+        color: #3730a3;
+        font-weight: 500;
+        background: linear-gradient( 135deg, #dbeafe, #ede9fe );
+    }
+
+    .submenu-item:hover {
+        color: #3730a3;
+        background: linear-gradient( 135deg, #eff6ff, #f5f3ff );
+    }
+
+
+/* =========================================
+           FOOTER
+        ========================================= */
+
+.sidebar-footer {
+    padding: 8px;
+    border-top: 1px solid var(--sidebar-border);
+}
+
+
+/* =========================================
+           COLLAPSED
+        ========================================= */
+
+.app-sidebar.collapsed {
+    width: var(--sidebar-collapsed-width);
+}
+
+
+    .app-sidebar.collapsed .app-name,
+    .app-sidebar.collapsed .sidebar-item span,
+    .app-sidebar.collapsed .menu-label,
+    .app-sidebar.collapsed .menu-arrow,
+    .app-sidebar.collapsed .branch-label,
+    .app-sidebar.collapsed .branch-info,
+    .app-sidebar.collapsed .branch-arrow {
+        display: none;
+    }
+
+
+    .app-sidebar.collapsed .sidebar-header {
+        justify-content: center;
+    }
+
+
+    .app-sidebar.collapsed .sidebar-toggle {
+        display: none;
+    }
+
+
+    .app-sidebar.collapsed .sidebar-item {
+        justify-content: center;
+        padding: 8px;
+    }
+
+
+    .app-sidebar.collapsed .submenu {
+        display: none;
+    }
+
+
+    /* BRANCH COLLAPSED */
+
+    .app-sidebar.collapsed .branch-container {
+        padding: 10px 8px;
+    }
+
+
+    .app-sidebar.collapsed .branch-button {
+        justify-content: center;
+        padding: 7px;
+    }
+
+
+    .app-sidebar.collapsed .branch-icon {
+        margin: 0;
+    }
+
+
+/* =========================================
+           MAIN
+        ========================================= */
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+    padding: 30px;
+    transition: margin-left .25s ease;
+}
+
+
+.app-sidebar.collapsed ~ .main-content {
+    margin-left: var(--sidebar-collapsed-width);
+}
+
+
+.content-card {
+    background: white;
+    border: 1px solid var(--sidebar-border);
+    border-radius: 10px;
+    padding: 25px;
+}
