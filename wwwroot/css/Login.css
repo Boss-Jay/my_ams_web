@@ -26,7 +26,8 @@
 
 .login-brand {
     width: 42%;
-    background: linear-gradient(145deg, #075bbb, #063b7a);
+    background: 145DEG;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(7, 91, 187, 1) 100%, rgba(6, 59, 122, 1) 100%);
     color: white;
     padding: 45px;
     display: flex;
@@ -128,7 +129,48 @@
     }
     .input-group-text button {
         border: 0;
+        
     }
+
+
+.input-group .form-control,
+.input-group .password-toggle {
+    height: 45px;
+    border: 1px solid #ced4da;
+    background-color: #fff;
+}
+
+.input-group .password-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 14px;
+    color: #6c757d;
+    border-left: 0;
+    border-radius: 0 6px 6px 0;
+}
+
+    .input-group .password-toggle:hover {
+        background-color: #fff;
+        color: #0d6efd;
+    }
+
+.input-group .form-control:focus {
+    box-shadow: none;
+    border-color: #86b7fe;
+}
+
+    .input-group .form-control:focus + .password-toggle {
+        border-color: #86b7fe;
+    }
+
+.input-group .input-group-text {
+    height: 45px;
+    background-color: #fff;
+    border-color: #ced4da;
+}
+
+
 
 .form-control {
     height: 46px;

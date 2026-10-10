@@ -20,42 +20,36 @@ if (sidebarToggle) {
     );
 }
 
-
-
-/* =================================================
-   BRANCH DROPDOWN
-================================================= */
-
 const branchButton =
     document.getElementById("branchButton");
 
 const branchMenu =
     document.getElementById("branchMenu");
 
+if (branchButton)
+    branchButton.addEventListener(
+        "click",
+        function (event) {
 
-branchButton.addEventListener(
-    "click",
-    function (event) {
+            event.stopPropagation();
 
-        event.stopPropagation();
+            /*
+             * Don't open dropdown while
+             * sidebar is collapsed.
+             */
 
-        /*
-         * Don't open dropdown while
-         * sidebar is collapsed.
-         */
+            if (
+                sidebar.classList.contains("collapsed")
+            ) {
 
-        if (
-            sidebar.classList.contains("collapsed")
-        ) {
+                return;
 
-            return;
+            }
+            if (branchMenu)
+            branchMenu.classList.toggle("open");
 
         }
-
-        branchMenu.classList.toggle("open");
-
-    }
-);
+    );
 
 
 
@@ -92,17 +86,17 @@ branchOptions.forEach(
                 /*
                  * Change selected branch
                  */
-
-                currentBranch.textContent =
-                    branch;
+                if (currentBranch)
+                    currentBranch.textContent =
+                        branch;
 
 
                 /*
                  * Change dashboard
                  */
-                if (dashboardBranch) 
-                dashboardBranch.textContent =
-                    branch;
+                if (dashboardBranch)
+                    dashboardBranch.textContent =
+                        branch;
 
 
                 /*
@@ -165,12 +159,12 @@ const savedBranch =
 
 
 if (savedBranch) {
-
+    if (currentBranch)
     currentBranch.textContent =
         savedBranch;
     if (dashboardBranch)
-    dashboardBranch.textContent =
-        savedBranch;
+        dashboardBranch.textContent =
+            savedBranch;
 
 
     branchOptions.forEach(
@@ -214,7 +208,7 @@ document.addEventListener(
                 ".branch-selector"
             )
         ) {
-
+            if (branchMenu)
             branchMenu.classList.remove(
                 "open"
             );

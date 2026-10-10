@@ -1,0 +1,179 @@
+﻿@using Ams_Web.Models;
+@model user_ViewModel
+
+@{
+    ViewData["Title"] = "User List";
+}
+
+<div class="user-page">
+
+    <!-- Page Header -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div class="d-flex align-items-center gap-3">
+            <div class="page-icon">
+                <i class="bi bi-people-fill"></i>
+            </div>
+            <div>
+                <h5 class="fw-bold mb-1">User List</h5>
+                <p class="text-secondary mb-0 fs-6">
+                    Manage your system users, roles, and access.
+                </p>
+            </div>
+        </div>
+
+        <a data-bs-toggle="modal"
+           data-bs-target="#createuser"
+           id="btnOpenCreateUser"
+           onclick="openUserModal()"
+        class="btn btn-primary px-4">
+            <i class="bi bi-plus-lg me-2"></i>Add New User
+        </a>
+    </div>
+
+    <!-- Statistics -->
+    <div class="row g-3 mb-4">
+
+        <div class="col-12 col-md-4">
+            <div class="card stat-card h-100">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-secondary mb-2">Total Users</p>
+                        <h3 class="fw-bold mb-0" id="totalUsers">4</h3>
+                    </div>
+                    <div class="stat-icon bg-primary-subtle text-primary">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card stat-card h-100">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-secondary mb-2">Active Users</p>
+                        <h3 class="fw-bold text-success mb-0" id="activeUsers">3</h3>
+                    </div>
+                    <div class="stat-icon bg-success-subtle text-success">
+                        <i class="bi bi-person-check-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card stat-card h-100">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div>
+                        <p class="text-secondary mb-2">Inactive Users</p>
+                        <h3 class="fw-bold text-warning mb-0" id="inactiveUsers">1</h3>
+                    </div>
+                    <div class="stat-icon bg-warning-subtle text-warning">
+                        <i class="bi bi-person-x-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- User List Card -->
+    <div class="card user-card">
+
+        <div class="card-header bg-white border-0 px-4 pt-4 pb-1">
+            <h6 class="fw-bold mb-1">All Users</h6>
+            <p class="text-secondary small mb-0">
+                View and manage registered system accounts.
+            </p>
+        </div>
+
+        <!-- Search and Filters -->
+       @*  <div class="card-body px-4">
+            <div class="row g-1">
+                <div class="col-12 col-lg-6">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-search text-secondary"></i>
+                        </span>
+                        <input type="text"
+                               id="searchInput"
+                               class="form-control form-control-sm"
+                               placeholder="Search name, email, or user ID...">
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <select class="" asp-items="ViewBag.vbrole"></select>
+                </div>
+
+                <div class="col-6 col-lg-3">
+                    <select class="" asp-items="ViewBag.vbbranch"></select>
+                </div>
+
+            </div>
+        </div> *@
+
+        <!-- Responsive Table -->
+        <div class="table-responsive table-scroll" style="min-height: 480px">
+            <table class="table align-middle user-table mb-0 " >
+                <thead>
+                    <tr>
+                        <th class="ps-4">User / FullName</th>
+                        <th>User ID</th>
+                        <th>Role</th>
+                        <th>Branch</th>
+                        <th>Status</th>
+                        <th>Date Created</th>
+                        <th class="text-center pe-4">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="userTableBody">
+                    @foreach (var item in Model._userTableList_Dto!)
+                    {
+                        <tr data-role="Administrator" data-status="Active">
+                            <td class="ps-4">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="user-avatar text-uppercase">
+                                        @item.Firstname!.Substring(0, 1)
+                                        @item.Lastname!.Substring(0, 1)
+                                    </div>
+                                    <div>
+                                        <div class="fw-semibold">@item.Username</div>
+                                        <small class="text-secondary">
+                                            @item.Lastname,
+                                            @item.Firstname @item.Middlename?.ToString().Substring(0, 1), @item.Suffix
+                                        </small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>@item.Id?.ToString().PadLeft(5, '0')</td>
+                            <td><span class="role-badge">@item.RoleDesc</span></td>
+                            <td>@item.BranchDesc</td>
+                            <td><span class="badge rounded-pill bg-success-subtle text-success">@item.StatusDesc</span></td>
+                            <td>@item.Date?.ToString("MMM dd,yyyy")</td>
+                            <td class="text-center pe-4">
+                                <div class="d-flex justify-content-center gap-1">
+                                    <button class="btn btn-sm btn-light action-btn"
+                                            title="View" aria-label="View user">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+                                
+                                    <a data-bs-toggle="modal"
+                                       data-bs-target="#updateuser"
+                                       id="btnOpenUpdateUser"
+                                       onclick="Get_User(@item.Id)"
+                                       class="btn btn-sm btn-light action-btn">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@await Html.PartialAsync("_Create_User")
+@await Html.PartialAsync("_Update_User")

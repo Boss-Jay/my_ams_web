@@ -1,4 +1,10 @@
-﻿
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var fullname = HttpContextAccessor.HttpContext?.Session.GetString("lastname")+", "+
+    HttpContextAccessor.HttpContext?.Session.GetString("firstname") + " " +
+    HttpContextAccessor.HttpContext?.Session.GetString("middlename");
+}
 <aside class="app-sidebar" id="sidebar">
 
 
@@ -18,16 +24,6 @@
             A M S
 
         </span>
-
-@* 
-        <button type="button"
-                class="sidebar-toggle"
-                id="sidebarToggle">
-
-            <i class="bi bi-chevron-left"></i>
-
-        </button> *@
-
     </div>
 
     <div class="branch-container">
@@ -236,7 +232,7 @@
             MAIN
 
         </div>
-
+        
 
         <!-- DASHBOARD -->
 
@@ -289,7 +285,7 @@
         <a href="#"
            class="sidebar-item">
 
-            <i class="bi bi-gear"></i>
+            <i class="bi bi-clipboard2-data"></i>
 
             <span>
                 Chart of Accounts
@@ -436,16 +432,58 @@
 
         <!-- USERS -->
 
-        <a href="#"
-           class="sidebar-item">
+        <div class="sidebar-group">
 
-            <i class="bi bi-person"></i>
 
-            <span>
-                Administrator
-            </span>
+            <button type="button"
+                    class="sidebar-item sidebar-dropdown">
 
-        </a>
+                <i class="bi bi-people"></i>
+
+                <span>
+                    Administrator
+                </span>
+
+                <i class="bi bi-chevron-right menu-arrow"></i>
+
+            </button>
+
+            <div class="submenu">
+
+                <a asp-action="User_Index" asp-controller="User"
+                   class="submenu-item">
+
+                    <i class="bi bi-person"></i>
+
+                    <span>
+                        User Account
+                    </span>
+
+                </a>
+
+                <a 
+                   class="submenu-item">
+
+                    <i class="bi bi-sliders"></i>
+
+                    <span>
+                        User Access
+                    </span>
+
+                </a>
+                <a class="submenu-item">
+
+                    <i class="bi bi-share-fill"></i>
+
+                    <span>
+                        Branch
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
 
 
     </div>
@@ -458,12 +496,12 @@
 
 
         <a href="#"
-           class="sidebar-item">
+           class="sidebar-item text-uppercase">
 
             <i class="bi bi-person-circle"></i>
 
             <span>
-                My Profile
+                @fullname
             </span>
 
         </a>

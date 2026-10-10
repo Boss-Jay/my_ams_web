@@ -37,15 +37,15 @@ body {
     top: 0;
     width: var(--sidebar-width);
     height: 100vh;
-    background: var(--sidebar-bg);
+    /*background: var(--sidebar-bg);*/
     border-right: 1px solid var(--sidebar-border);
     display: flex;
     flex-direction: column;
     z-index: 1000;
     transition: width .25s ease;
     overflow: hidden;
-    background: #8571eb;
-    background: linear-gradient(90deg, rgba(133, 113, 235, 1) 0%, rgba(107, 107, 242, 1) 0%, rgba(100, 141, 237, 1) 75%, rgba(171, 223, 237, 1) 100%, rgba(74, 210, 237, 1) 100%);
+    background: 145DEG;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(7, 91, 187, 1) 100%, rgba(6, 59, 122, 1) 100%);
     border-right: 1px solid #dbe4f0;
 }
 
@@ -82,6 +82,7 @@ body {
     margin-left: 10px;
     font-size: 15px;
     font-weight: 600;
+    color: white;
     white-space: nowrap;
 }
 
@@ -117,7 +118,7 @@ body {
     padding: 0 8px 6px;
     font-size: 10px;
     font-weight: 600;
-    color: dimgrey;
+    color: white;
     letter-spacing: .08em;
 }
 
@@ -298,10 +299,6 @@ body {
 }
 
 
-/* =========================================
-           SIDEBAR CONTENT
-        ========================================= */
-
 .sidebar-content {
     flex: 1;
     overflow-y: auto;
@@ -309,22 +306,15 @@ body {
 }
 
 
-/* =========================================
-           LABEL
-        ========================================= */
-
 .menu-label {
-    padding: 10px 10px 6px;
-    color: dimgray;
+    padding: 10px 10px 8px;
+    color: wheat;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: .08em;
+   /* border-bottom: 1px solid var(--sidebar-border);*/
 }
 
-
-/* =========================================
-           MENU ITEM
-        ========================================= */
 
 .sidebar-item {
     width: 100%;
@@ -337,7 +327,9 @@ body {
     border: none;
     border-radius: 6px;
     background: transparent;
-    color: var(--sidebar-text);
+    color:white;
+   
+    /*color: var(--sidebar-text);*/
     font-size: 14px;
     text-decoration: none;
     cursor: pointer;
@@ -347,6 +339,7 @@ body {
 
     .sidebar-item:hover {
         background: linear-gradient( 135deg, #eff6ff, #f5f3ff );
+        color:black;
     }
 
 
@@ -364,11 +357,6 @@ body {
         font-size: 17px;
         text-align: center;
     }
-
-
-/* =========================================
-           DROPDOWN MENU
-        ========================================= */
 
 .sidebar-group {
     width: 100%;
@@ -392,9 +380,6 @@ body {
 }
 
 
-/* =========================================
-           SUBMENU
-        ========================================= */
 
 .submenu {
     display: none;
@@ -415,7 +400,7 @@ body {
     padding: 8px 10px 8px 30px;
     margin: 2px 0;
     border-radius: 6px;
-    color: var(--sidebar-muted);
+    color: white;
     text-decoration: none;
     font-size: 13px;
 }
@@ -431,19 +416,11 @@ body {
     }
 
 
-/* =========================================
-           FOOTER
-        ========================================= */
-
 .sidebar-footer {
     padding: 8px;
     border-top: 1px solid var(--sidebar-border);
 }
 
-
-/* =========================================
-           COLLAPSED
-        ========================================= */
 
 .app-sidebar.collapsed {
     width: var(--sidebar-collapsed-width);
@@ -500,21 +477,21 @@ body {
     }
 
 
-/* =========================================
-           MAIN
-        ========================================= */
-
 .main-content {
     margin-left: var(--sidebar-width);
+    width: calc(100% - var(--sidebar-width));
     min-height: 100vh;
-    padding: 30px;
-    transition: margin-left .25s ease;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: left;
+    transition: margin-left .25s ease, width .25s ease;
 }
 
+    /* Keep the page content aligned to the left */
+    .main-content > * {
+        margin-left: 0;
+    }
 
-.app-sidebar.collapsed ~ .main-content {
-    margin-left: var(--sidebar-collapsed-width);
-}
 
 
 .content-card {

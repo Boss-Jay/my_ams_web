@@ -1,0 +1,160 @@
+﻿
+
+<div class="modal fade"
+     id="updateuser"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+
+
+        <div class="page-container">
+            <div class="registration-wrapper">
+                <!-- CARD -->
+                <div class="card modal-content">
+                    <!-- CARD HEADER -->
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            Account Information
+                        </h2>
+                        <p class="card-description">
+                            Enter the user's personal information and system access.
+                        </p>
+
+                    </div>
+                    <input  id="userUpId" hidden />
+
+                    <!-- CARD BODY -->
+                    <div class="card-body">
+
+                        <!-- PERSONAL INFORMATION -->
+                        <div class="form-section">
+
+                            <div class="section-title">
+                                <i class="bi bi-person"></i>
+                                Personal Information
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+                                    <label > First Name </label>
+                                    <input  id="userUpfname"
+                                           placeholder="Juan">
+                                </div>
+
+                                <div class="form-group">
+                                    <label >Middle Name</label>
+                                    <input id="userUpmname"
+                                           placeholder="Borgos">
+                                </div>
+
+                                <div class="form-group">
+                                    <label >Last Name</label>
+                                    <input  id="userUplname"
+                                           placeholder="Dela Cruz">
+                                </div>
+
+                                <div class="form-group">
+                                    <label >Suffix</label>
+                                    <input  id="userUpsuffix"
+                                           placeholder="II III JR SR">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- LOGIN INFORMATION -->
+                        <div class="form-section">
+
+                            <div class="section-title">
+                                <i class="bi bi-shield-lock"></i>
+                                Login Information
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label >Username</label>
+                                    <input  id="userUpusername"
+                                           placeholder="jbdelacruz">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- SYSTEM ACCESS -->
+                        <div class="form-section">
+
+                            <div class="section-title">
+                                <i class="bi bi-diagram-3"></i>
+                                System Access
+                            </div>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label >Role</label>
+                                    <select  id="userUprole"
+                                            asp-items="ViewBag.vbrole">
+                                        <option value="">
+                                            Select role
+                                        </option>
+                                    </select>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label >Branch</label>
+                                    <select  id="userUpbranch"
+                                            asp-items="ViewBag.vbbranch">
+                                        <option value="">
+                                            Select role
+                                        </option>
+                                    </select>
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <!-- FOOTER -->
+                    <div class="card-footer">
+
+                        <button type="button"
+                                class="btn btn-cancel "
+                                data-bs-dismiss="modal"
+                                onclick="closeUpdateUserModal()" aria-label="Close">
+                            Cancel
+                        </button>
+
+                        <button type="submit" id="btnuserupdate"
+                                onclick="Update_User()"
+                                class="btn btn-primary">
+                            <i class="bi bi-person-plus"></i>
+                            Update User
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
