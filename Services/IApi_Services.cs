@@ -12,5 +12,9 @@ namespace Ams_Web.Services
         Task<List<userList_Dto>> User_List_Table();
         Task<userList_Dto> Get_user(int? Id);
         Task<Api_Response> Update_User(int? Id, userUpdate_Dto _userUpdate_Dto);
+        Task<Api_Response> Update_User_Status(int Id, int StatusId);
+        Task<userDashboard_Dto?> Dashboard_Count();
+        Task<Api_Response> Change_Password(userChange_Password _userChange_Password);
+        Task<List<accessModule_Dto>> User_Module();
     }
 }

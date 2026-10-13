@@ -50,5 +50,10 @@ namespace Ams_Web.Controllers
                 redirectUrl = Url.Action("Index", "Home")
             });
         }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("UserLogin", "Login");
+        }
     }
 }

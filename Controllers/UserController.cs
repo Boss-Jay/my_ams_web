@@ -22,7 +22,8 @@ namespace Ams_Web.Controllers
             ViewBag.vbbranch = new SelectList(branch, "Branchid", "Name");
             var user = new user_ViewModel
             {
-                _userTableList_Dto = await _api_Services.User_List_Table()
+                _userTableList_Dto = await _api_Services.User_List_Table(),
+                _userDashboard_Dto = await _api_Services.Dashboard_Count()
             };
             return View(user);
         }
@@ -59,7 +60,26 @@ namespace Ams_Web.Controllers
             }
             return Json(result);
         }
-
-
+        [HttpPost]
+        public async Task<IActionResult> Update_User_Status(int Id, int StatusId)
+        {
+         
+            var result = await _api_Services.Update_User_Status(Id, StatusId);
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+            return Json(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Change_Password(userChange_Password _userChange_Password)
+        {
+            var result = await _api_Services.Change_Password(_userChange_Password);
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+            return Json(result);
+        }
     }
 }

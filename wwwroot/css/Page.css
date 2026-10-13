@@ -585,3 +585,24 @@ select {
 
       
     }
+/*accesss css form user access*/
+#useraccess .table {
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+    #useraccess .table th {
+        font-weight: 600;
+        color: #374151;
+        white-space: nowrap;
+    }
+
+    #useraccess .table td {
+        padding: 12px;
+    }
+
+#useraccess .form-check-input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}

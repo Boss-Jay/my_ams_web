@@ -1,0 +1,140 @@
+﻿@using Ams_Web.Dto
+@model userChange_Password
+<div class="modal fade"
+     id="changepassword"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-sm">
+        <div class="modal-content change-password-modal">
+
+            <div class="modal-header border-0 pb-0">
+                <div class="d-flex align-items-center gap-3">
+                    
+
+                    <div>
+                        <h5 class="modal-title fw-bold" id="changePasswordLabel">
+                            Change Password
+                        </h5>
+                        <p class="text-muted small mb-0">
+                            Update your account credentials
+                        </p>
+                    </div>
+                </div>
+
+              @*   <button type="button" class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button> *@
+            </div>
+
+            <div class="modal-body pt-4">
+
+                <form id="changePasswordForm"  >
+
+                    <!-- Username -->
+                    <div class="mb-3">
+                        <label for="username" class="form-label">
+                            Username
+                        </label>
+
+                        <div class="input-group custom-input">
+                            <span class="input-group-text">
+                                <i class="bi bi-person"></i>
+                            </span>
+
+                            <input type="text"
+                                asp-for="Username"
+                                   class="form-control"
+                                   id="username"
+                                   name="Username"
+                                   placeholder="Enter username"
+                                   autocomplete="username"
+                                   required>
+                        </div>
+                    </div>
+
+                    <!-- New Password -->
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">
+                            New Password
+                        </label>
+
+                        <div class="input-group custom-input">
+                            <span class="input-group-text">
+                                <i class="bi bi-lock"></i>
+                            </span>
+
+                            <input type="password"
+                                   asp-for="NewPassword"
+                                   class="form-control"
+                                   id="newPassword"
+                                 
+                                   placeholder="Enter new password"
+                                   autocomplete="new-password"
+                                   required>
+
+                            <button type="button"
+                                    class="btn password-toggle"
+                                    data-target="newPassword"
+                                    aria-label="Show new password"
+                                    aria-pressed="false">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Re-type Password -->
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">
+                            Re-type Password
+                        </label>
+
+                        <div class="input-group custom-input">
+                            <span class="input-group-text">
+                                <i class="bi bi-lock-fill"></i>
+                            </span>
+
+                            <input type="password"
+                                   asp-for="RetypeNewPassword"
+                                   class="form-control"
+                                   id="confirmPassword"
+                                
+                                   placeholder="Re-type new password"
+                                   autocomplete="new-password"
+                                   required>
+
+                            <button type="button"
+                                    class="btn password-toggle"
+                                    data-target="confirmPassword"
+                                    aria-label="Show re-typed password"
+                                    aria-pressed="false">
+                                <i class="bi bi-eye"></i>
+                            </button>
+                        </div>
+
+                        <small id="passwordMessage"
+                               class="mt-2 d-block"></small>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="d-flex justify-content-end gap-2 mt-4">
+                        <button type="button"
+                                class="btn btn-cancel"
+                                data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+
+                        <button type="submit" id="btnchangepassword"
+                                class="btn btn-change">
+                            <i class="bi bi-check2-circle me-1"></i>
+                            Submit
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

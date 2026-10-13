@@ -3,7 +3,7 @@
 @{
     var fullname = HttpContextAccessor.HttpContext?.Session.GetString("lastname")+", "+
     HttpContextAccessor.HttpContext?.Session.GetString("firstname") + " " +
-    HttpContextAccessor.HttpContext?.Session.GetString("middlename");
+    HttpContextAccessor.HttpContext?.Session.GetString("middlename")!.Substring(0,1)+".";
 }
 <aside class="app-sidebar" id="sidebar">
 
@@ -461,7 +461,7 @@
 
                 </a>
 
-                <a 
+                <a asp-action="Access_Index" asp-controller="UserAccess"
                    class="submenu-item">
 
                     <i class="bi bi-sliders"></i>
@@ -495,13 +495,13 @@
     <div class="sidebar-footer">
 
 
-        <a href="#"
-           class="sidebar-item text-uppercase">
+        <a asp-controller="Login" asp-action="Logout"
+           class="sidebar-item-footer ">
 
-            <i class="bi bi-person-circle"></i>
+            <i class="bi bi-box-arrow-right"></i>
 
             <span>
-                @fullname
+               LOG OUT - @fullname 
             </span>
 
         </a>

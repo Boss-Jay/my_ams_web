@@ -133,115 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     };
 
-  /*  const frmuserupdate = document.getElementById("frmuserupdate");
-    const btnuserupdate = document.getElementById("btnuserupdate");
-    if (btnuserupdate) {
-        btnuserupdate.addEventListener("click", function (e) {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "Do you want to update this user?",
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, Update it!',
-                cancelButtonText: 'Cancel'
-            }).then((result) => {
-                if (result.isConfirmed) {
 
-                    // Show loading
-                    Swal.fire({
-                        title: 'Updating...',
-                        text: 'Please wait',
-                        allowOutsideClick: false,
-                        didOpen: () => Swal.showLoading()
-                    });
-
-                    // Send form data using Fetch API
-                    fetch('/User/Update_User', {
-                        method: 'POST',
-                        body: new FormData(frmuserupdate)
-                    })
-                        .then(res => res.json())
-                        .then(data => {
-                            if (data.success) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Update Successfully!',
-                                    text: data.message,
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                }).then(() => {
-                                    // Redirect after success
-                                    window.location.href = '/User/User_Index';
-                                });
-                            } else {
-                                let errorHtml = "";
-
-                                // Remove previous validation styles
-                                document.querySelectorAll(".is-invalid")
-                                    .forEach(el => {
-                                        el.classList.remove("is-invalid");
-                                    });
-
-                                // API validation errors
-                                if (data.errors) {
-
-                                    Object.entries(data.errors).forEach(
-                                        ([fieldName, errors]) => {
-
-                                            // Find input by ASP.NET field name
-                                            const input =
-                                                document.querySelector(
-                                                    `[name="${fieldName}"]`
-                                                );
-
-                                            if (input) {
-
-                                                input.classList.add("is-invalid");
-
-                                            }
-
-                                            // Display errors
-                                            errors.forEach(msg => {
-
-                                                errorHtml +=
-                                                    "• " + msg + "<br>";
-
-                                            });
-
-                                        }
-                                    );
-
-                                    // Focus first invalid input
-                                    const firstInvalid =
-                                        document.querySelector(".is-invalid");
-
-                                    if (firstInvalid) {
-                                        firstInvalid.focus();
-                                    }
-
-                                } else {
-
-                                    errorHtml =
-                                        data.message ||
-                                        "Validation failed.";
-
-                                }
-
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Validation Error',
-                                    html: errorHtml
-                                });
-                            }
-                        })
-                        .catch(() => {
-                            Swal.fire('Error', 'Something went wrong on the server!', 'error');
-                        });
-                }
-            });
-        });
-    };*/
     const updateuser = document.getElementById("updateuser");
     if (updateuser) {
         // Create Bootstrap modal instance
@@ -319,6 +211,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Optional: reset the form
             const form = createuser.querySelector("form");
+            if (form) {
+                form.reset();
+            }
+        });
+    }
+    // access modal
+    const useraccess = document.getElementById("useraccess");
+    if (useraccess) {
+        // Create Bootstrap modal instance
+        const useraccessModal = new bootstrap.Modal(useraccess, {
+            backdrop: 'static',
+            keyboard: false
+        });
+        if (useraccessModal)
+            // Open modal
+            window.openuseraccessModal = function () {
+                useraccessModal.show();
+            };
+
+        // Close modal safely
+        window.closeuseraccessModal = function () {
+
+            // Remove focus from the currently focused element
+            if (document.activeElement) {
+                document.activeElement.blur();
+            }
+
+            useraccessModal.hide();
+        };
+
+        // When the modal is fully hidden
+        useraccess.addEventListener("hidden.bs.modal", function () {
+
+            // Move focus somewhere outside the modal
+            const openButton = document.getElementById("btnOpenuseraccess");
+
+            if (openButton) {
+                openButton.focus();
+            }
+
+            // Optional: reset the form
+            const form = useraccess.querySelector("form");
             if (form) {
                 form.reset();
             }
@@ -467,6 +401,61 @@ function Update_User() {
                 .catch(() => {
                     Swal.fire('Error', 'Something went wrong on the server!', 'error');
                 });
+        }
+    });
+};
+function ToggleUserStatus(Id, currentStatus) {
+    const newStatus = currentStatus === 1 ? 0 : 1;
+
+    $.ajax({
+        url: '/User/Update_User_Status',
+        type: 'POST',
+        data: {
+            Id: Id,
+            StatusId: newStatus
+        },
+        success: function (response) {
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: response.message
+            }).then(() => {
+                location.reload(); // Refresh table
+            });
+
+        },
+        error: function (xhr) {
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: xhr.responseText
+            });
+
+        }
+    });
+}
+function Get_User_Access(Id) {
+    // alert(id);
+    $.ajax({
+        url: '/User/Get_User',
+        type: 'GET',
+        data: { Id: Id },
+        success: function (user) {
+            $('#accessuserid').val(user.id);
+            $('#accessfullname').text(
+                `${user.lastname}, ${user.firstname} ${user.middlename ?? ''} (${user.roleDesc})`
+                    .replace(/\s+/g, ' ')
+                    .trim()
+            );
+            openuseraccessModal();
+        },
+        error: function () {
+            Swal.fire(
+                'Error',
+                'Unable to load user information',
+                'error');
         }
     });
 };

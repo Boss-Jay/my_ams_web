@@ -101,7 +101,7 @@ namespace Ams_Web.Services
                 return new Api_Response
                 {
                     Success = true,
-                    Message = "Status updated."
+                    Message = "User is updated."
                 };
             }
 
@@ -110,6 +110,63 @@ namespace Ams_Web.Services
                 Success = false,
                 Message = await response.Content.ReadAsStringAsync()
             };
+        }
+        public async Task<Api_Response> Update_User_Status(int Id, int StatusId)
+        {
+
+            var response = await _httpClient.PutAsync($"api/useraccnt/update-user-status?Id={Id}&StatusId={StatusId}", null);
+            if (response.IsSuccessStatusCode)
+            {
+                return new Api_Response
+                {
+                    Success = true,
+                    Message = "Status is updated."
+                };
+            }
+
+            return new Api_Response
+            {
+                Success = false,
+                Message = await response.Content.ReadAsStringAsync()
+            };
+        }
+        public async Task<userDashboard_Dto?> Dashboard_Count()
+        {
+ 
+            var response = await _httpClient.GetAsync($"api/useraccnt/dashboard_count");
+            if (!response.IsSuccessStatusCode)
+                return null;
+
+            return await response.Content.ReadFromJsonAsync<userDashboard_Dto>();
+        }
+        public async Task<Api_Response> Change_Password(userChange_Password _userChange_Password)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"api/useraccnt/user-change-pass", _userChange_Password);
+            if (response.IsSuccessStatusCode)
+            {
+                return new Api_Response
+                {
+                    Success = true,
+                    Message = "Password is successfully changed."
+                };
+            }
+            return new Api_Response
+            {
+                Success = false,
+                Message = await response.Content.ReadAsStringAsync()
+            };
+        }
+        // User Access
+        public async Task<List<accessModule_Dto>> User_Module()
+        {
+            var response = await _httpClient.GetAsync($"api/useraccess/module-list");
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content
+                .ReadFromJsonAsync<List<accessModule_Dto>>()
+                ?? new List<accessModule_Dto>();
+            }
+            return new List<accessModule_Dto>();
         }
     }
 
