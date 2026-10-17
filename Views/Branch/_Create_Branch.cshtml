@@ -1,0 +1,154 @@
+﻿@using Ams_Web.Models;
+@model branch_ViewModel
+
+<div class="modal fade"
+     id="createbranch"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+        <form asp-action="Create_Branch" id="frmcreatebranch">
+            <div class="page-container">
+                <div class="registration-wrapper">
+                    <div class="card modal-content">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                New Branch
+                            </h2>
+                            <p class="card-description">
+                                Enter the branch's  information .
+                            </p>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="form-section">
+                                <div class="section-title">
+                                    <i class="bi bi-building"></i>
+                                    Branch Information
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="_branchCreate_Dto.CompanyId"> </label>
+                                    <select asp-for="_branchCreate_Dto.CompanyId"
+                                            asp-items="ViewBag.vbcompany" class="w-100">
+                                        <option value="">
+                                            Select Company
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="_branchCreate_Dto.Name"> </label>
+                                    <input asp-for="_branchCreate_Dto.Name"
+                                           placeholder="Tondo">
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="_branchCreate_Dto.Address"> </label>
+                                    <textarea asp-for="_branchCreate_Dto.Address"
+                                              placeholder="Looc Mandaue City ">
+                                           </textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="_branchCreate_Dto.Zipcode"> </label>
+                                    <input type="text" asp-for="_branchCreate_Dto.Zipcode" class="w-25"
+                                           placeholder="6010">
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label asp-for="_branchCreate_Dto.Email1"> </label>
+                                        <input asp-for="_branchCreate_Dto.Email1">
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="_branchCreate_Dto.Email2"> </label>
+                                        <input asp-for="_branchCreate_Dto.Email2">
+                                    </div>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label asp-for="_branchCreate_Dto.Tin"> </label>
+                                        <input asp-for="_branchCreate_Dto.Tin"
+                                               placeholder="Tondo">
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="_branchCreate_Dto.Code"> </label>
+                                        <input asp-for="_branchCreate_Dto.Code"
+                                               placeholder="Tondo">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-section">
+                                <div class="section-title">
+                                    <i class="bi bi-telephone"></i>
+                                    Contact / Inline Person
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label asp-for="_branchCreate_Dto.Contact1"> </label>
+                                        <input asp-for="_branchCreate_Dto.Contact1"
+                                               placeholder="0908000000">
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="_branchCreate_Dto.Contact2"> </label>
+                                        <input asp-for="_branchCreate_Dto.Contact2"
+                                               placeholder="0908000000">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="_branchCreate_Dto.ManagerId"> </label>
+                                    <select asp-for="_branchCreate_Dto.ManagerId"
+                                            asp-items="ViewBag.vbuserlisting" class="w-100">
+                                        <option value="">
+                                            Select User
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="_branchCreate_Dto.Accountant"> </label>
+                                    <select asp-for="_branchCreate_Dto.Accountant"
+                                            asp-items="ViewBag.vbuserlisting" class="w-100">
+                                        <option value="">
+                                            Select User
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <div class="section-title">
+                                    <i class="bi bi-upc"></i>
+                                    Code
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label asp-for="_branchCreate_Dto.Ocn"> </label>
+                                        <input asp-for="_branchCreate_Dto.Ocn"
+                                               placeholder="0142">
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="_branchCreate_Dto.Rdo"> </label>
+                                        <input asp-for="_branchCreate_Dto.Rdo"
+                                               placeholder="0124">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button"
+                                    class="btn btn-outline-secondary"
+                                    data-bs-dismiss="modal">
+                                <i class="bi bi-x-circle me-1"></i>
+                                Cancel
+                            </button>
+                            <button type="submit" id="btncreatebranch"
+                                    class="btn btn-primary">
+                                <i class="bi bi-building-add"></i>
+                                Create Branch
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

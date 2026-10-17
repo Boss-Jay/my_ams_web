@@ -1,0 +1,152 @@
+﻿@using Ams_Web.Models;
+@model supplier_ViewModel
+
+<div class="modal fade"
+     id="updatesupplier"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+
+        <div class="supplier-container">
+            <div class="supplier-wrapper">
+                <div class="card modal-content">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            Update Supplier
+                        </h2>
+                        <p class="card-description">
+                            Update the Supplier's  information .
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-section">
+                            <div class="section-title">
+                                <i class="bi bi-person-badge"></i>
+                                Supplier Information
+                            </div>
+                            <div class="form-grid">
+                                <!--Supplier Id-->
+                                <input type="text" id="upsupplierid" hidden />
+                                <div class="form-group">
+                                    <label asp-for="supplierUpdate_Dto.Tin"> </label>
+                                    <input type="text" class="gray-input"
+                                           id="upsuppliertin"
+                                           placeholder="000-000-000"
+                                           maxlength="11"
+                                           inputmode="numeric" readonly />
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="supplierUpdate_Dto.BranchCode"> </label>
+                                    <input type="text" class="gray-input"
+                                           id="upsuppliertincode"
+                                           placeholder="0000"
+                                           maxlength="4"
+                                           inputmode="numeric" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="supplierUpdate_Dto.Type"> </label>
+                                <select  class="w-100"
+                                        id="upsuppliettypeid"
+                                        onchange="Update_Show_Selected_Type()">
+                                    <option value=""></option>
+                                    <option value="1">Individual</option>
+                                    <option value="2">Corporation</option>
+                                </select>
+                            </div>
+                            <div id="upindividual">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label asp-for="supplierUpdate_Dto.Firstname"> </label>
+                                        <input type="text" id="upsupplierfname"
+                                             
+                                               placeholder="Juan" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="supplierUpdate_Dto.Lastname"> </label>
+                                        <input type="text" id="upsupplierlname"
+                                              
+                                               placeholder="Dela Cruz" />
+                                    </div>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label asp-for="supplierUpdate_Dto.MiddleInitial"> </label>
+                                        <input type="text" id="upsuppliermname"
+                                             
+                                               maxlength="1"
+                                               placeholder="M." />
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="supplierUpdate_Dto.Suffix"> </label>
+                                        <input type="text" id="upsuppliersufix"
+                                              
+                                               placeholder="III JR SR" />
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div id="upcorporation">
+                                <div class="form-group">
+                                    <label asp-for="supplierUpdate_Dto.Corporation"> </label>
+                                    <input type="text" id="upsuppliercorporation"
+                                           
+                                           placeholder="Juan Corporation" />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="supplierUpdate_Dto.Address"> </label>
+                                <textarea type="text" id="upsupplieraddress" rows="5"
+                                      ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="supplierUpdate_Dto.ZipCode"> </label>
+                                <input type="text" class="w-25" id="upsupplierzipcode"
+                                       maxlength="4"
+                                        />
+                            </div>
+                            <div class="form-grid">
+
+                                <div class="form-group" id="upindividualtradename">
+                                    <label asp-for="supplierUpdate_Dto.Tradename"> </label>
+                                    <input type="text" placeholder="Trade Name (Optional)" id="upsuppliertradename"
+                                            />
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="supplierUpdate_Dto.TaxReg"> </label>
+                                    <select id="upsuppliertagreg" class="w-100">
+                                        <option value="1">Vat</option>
+                                        <option value="2">Non-Vat</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button"
+                                class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-1"></i>
+                            Cancel
+                        </button>
+                        <div id="upsuppliersavebutton">
+                            <button type="submit" id="btnupdatesupplier"
+                                    onclick="Update_Supplier()"
+                                    class="btn btn-primary">
+                                <i class="bi bi-person-fill-add"></i>
+                                Update Supplier
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

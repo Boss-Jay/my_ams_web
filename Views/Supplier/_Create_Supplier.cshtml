@@ -1,0 +1,152 @@
+﻿@using Ams_Web.Models;
+@model supplier_ViewModel
+
+<div class="modal fade"
+     id="createsupplier"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+        <form asp-action="Create_Supplier" id="frmcreatesupplier">
+            <div class="supplier-container">
+                <div class="supplier-wrapper">
+                    <div class="card modal-content">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                New Supplier
+                            </h2>
+                            <p class="card-description">
+                                Enter the Supplier's  information .
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-section">
+                                <div class="section-title">
+                                    <i class="bi bi-person-badge"></i>
+                                    Supplier Information
+                                </div>
+                                <div class="form-grid">
+
+                                    <div class="form-group">
+                                        <label asp-for="supplierCreate_Dto.Tin"> </label>
+                                        <input type="text" class="gray-input"
+                                               asp-for="supplierCreate_Dto.Tin"
+                                               id="createsuppliertin"
+                                               placeholder="000-000-000"
+                                               maxlength="11"
+                                               inputmode="numeric" readonly />
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="supplierCreate_Dto.BranchCode"> </label>
+                                        <input type="text" class="gray-input"
+                                               asp-for="supplierCreate_Dto.BranchCode"
+                                               id="createsuppliertincode"
+                                               placeholder="0000"
+                                               maxlength="4"
+                                               inputmode="numeric" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="supplierCreate_Dto.Type"> </label>
+                                    <select asp-for="supplierCreate_Dto.Type" class="w-100"
+                                             id="suppliettypeid"
+                                            onchange="Create_Show_Selected_Type()">
+                                        <option value=""></option>
+                                        <option value="1">Individual</option>
+                                        <option value="2">Corporation</option>
+                                    </select>
+                                </div>
+                                <div id="individual">
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label asp-for="supplierCreate_Dto.Firstname"> </label>
+                                            <input type="text" id="supplierfname"
+                                                   asp-for="supplierCreate_Dto.Firstname"
+                                                   placeholder="Juan" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="supplierCreate_Dto.Lastname"> </label>
+                                            <input type="text" id="supplierlname"
+                                                   asp-for="supplierCreate_Dto.Lastname"
+                                                   placeholder="Dela Cruz" />
+                                        </div>
+                                    </div>
+                                    <div class="form-grid">
+                                        <div class="form-group">
+                                            <label asp-for="supplierCreate_Dto.MiddleInitial"> </label>
+                                            <input type="text" id="suppliermname"
+                                                   asp-for="supplierCreate_Dto.MiddleInitial"
+                                                   maxlength="1"
+                                                   placeholder="M." />
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="supplierCreate_Dto.Suffix"> </label>
+                                            <input type="text" id="suppliersufix"
+                                                   asp-for="supplierCreate_Dto.Suffix"
+                                                   placeholder="III JR SR" />
+                                        </div>
+                                    </div>
+                                  
+                                </div>
+
+                                <div id="corporation">
+                                    <div class="form-group">
+                                        <label asp-for="supplierCreate_Dto.Corporation"> </label>
+                                        <input type="text" id="suppliercorporation"
+                                               asp-for="supplierCreate_Dto.Corporation"
+                                               placeholder="Juan Corporation" />
+                                    </div>
+                                  
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="supplierCreate_Dto.Address"> </label>
+                                    <textarea type="text" placeholder="Looc Mandaue City"
+                                              asp-for="supplierCreate_Dto.Address" ></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="supplierCreate_Dto.ZipCode"> </label>
+                                    <input type="text" class="w-25" id="supplierzipcode"
+                                           maxlength="4" placeholder="6***"
+                                           asp-for="supplierCreate_Dto.ZipCode" />
+                                </div>
+                                <div class="form-grid">
+
+                                    <div class="form-group" id="individualtradename">
+                                        <label asp-for="supplierCreate_Dto.Tradename"> </label>
+                                        <input type="text" placeholder="Trade Name (Optional)"
+                                               asp-for="supplierCreate_Dto.Tradename" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="supplierCreate_Dto.TaxReg"> </label>
+                                        <select asp-for="supplierCreate_Dto.TaxReg" class="w-100">
+                                            <option value="1">Vat</option>
+                                            <option value="2">Non-Vat</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button"
+                                    class="btn btn-outline-secondary"
+                                    data-bs-dismiss="modal">
+                                <i class="bi bi-x-circle me-1"></i>
+                                Cancel
+                            </button>
+                            <div id="suppliersavebutton">
+                                <button type="submit" id="btncreatesupplier"
+                                        class="btn btn-primary">
+                                    <i class="bi bi-person-fill-add"></i>
+                                    Create Supplier
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

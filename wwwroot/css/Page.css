@@ -98,10 +98,11 @@
 .section-title {
     display: flex;
     align-items: center;
-    gap: 7px;
-    margin-bottom: 14px;
+    gap: 5px;
+
+    margin-bottom: 5px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 500;
     color: #0f172a;
 }
 
@@ -124,6 +125,7 @@
     flex-direction: column;
     gap: 6px;
     min-width: 0;
+    padding-top: 5px;
 }
 
     .form-group.full {
@@ -139,7 +141,12 @@ label {
     font-weight: 500;
     color: #334155;
 }
-
+textarea {
+    min-height: 65px;
+    overflow-y: hidden;
+    resize: none;
+}
+textarea,
 input,
 select {
     width: 100%;
@@ -154,16 +161,18 @@ select {
     outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
 }
+    textarea:
 
-    input::placeholder {
+    input::placeholder,
+    textarea::placeholder {
         color: #94a3b8;
     }
-
+    textarea:hover,
     input:hover,
     select:hover {
         border-color: #94a3b8;
     }
-
+    textarea:focus,
     input:focus,
     select:focus {
         border-color: #2563eb;
@@ -416,6 +425,7 @@ select {
     }
 
 .stat-card,
+.branch-card,
 .user-card {
     border: 1px solid #e7ecf4;
     border-radius: 12px;
@@ -437,7 +447,7 @@ select {
     font-size: 22px;
 }
 
-.user-card {
+.user-card, .branch-card {
     overflow: hidden;
 }
 
@@ -455,11 +465,13 @@ select {
         box-shadow: 0 0 0 .2rem rgba(13, 110, 253, .10);
     }
 
-.user-table {
+.user-table,
+
+.branch-table{
     white-space: nowrap;
 }
 
-    .user-table thead th {
+    .user-table  thead th {
         padding-top: 15px;
         padding-bottom: 15px;
         background: #f7f9fd;
@@ -479,6 +491,29 @@ select {
     }
 
     .user-table tbody tr:hover > * {
+        background: #f8faff;
+    }
+
+    .branch-table thead th {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background: #f7f9fd;
+        color: #64748b;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #e8edf5;
+    }
+
+    .branch-table tbody td {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-size: 12px;
+        border-color: #edf0f5;
+    }
+
+    .branch-table tbody tr:hover > * {
         background: #f8faff;
     }
 
@@ -585,10 +620,15 @@ select {
 
       
     }
+.accesstable-scroll {
+    height: 600px;
+    overflow: auto;
+}
 /*accesss css form user access*/
 #useraccess .table {
-    font-size: 13px;
+    font-size: 12px;
     margin-bottom: 0;
+
 }
 
     #useraccess .table th {
@@ -598,11 +638,24 @@ select {
     }
 
     #useraccess .table td {
-        padding: 12px;
+        padding: 10px;
     }
 
 #useraccess .form-check-input {
     width: 16px;
     height: 16px;
+    border-radius: 50%;
     cursor: pointer;
+    margin: 0;
 }
+.gray-input {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    color: #495057;
+}
+
+    .gray-input:focus {
+        background-color: #e9ecef;
+        border-color: #adb5bd;
+        box-shadow: none;
+    }

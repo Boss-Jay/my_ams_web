@@ -1,0 +1,56 @@
+﻿@using Ams_Web.Models;
+@model tenants_ViewModel
+
+@{
+    ViewData["Title"] = "Tenants";
+}
+<div class="supplier-page">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div class="d-flex align-items-center gap-3">
+            <div class="supplier-icon">
+                <i class="bi bi-house-heart"></i>
+            </div>
+            <div>
+                <h5 class="fw-bold mb-1 text-uppercase">Tenants</h5>
+                <p class="text-secondary mb-0 fs-6">
+                    Manage tenants informations.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card supplier-card">
+        <div class="card-body">
+            <div class="d-flex justify-content-start align-items-center mb-2">
+                <p class="text-secondary mb-0 fs-6">
+                    Find tenants information using TIN or Code before adding to minimize duplication.
+                </p>
+            </div>
+
+            <div class="form-section">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>T.I.N</label>
+                        <input type="text"
+                             
+                               id="searchtenantstin"
+                               placeholder="000-000-000"
+                               maxlength="11"
+                               inputmode="numeric" />
+                    </div>
+                    <div class="form-group">
+                        <label>BRANCH CODE</label>
+                        <input type="text"
+                               id="searchtenantstinCode"
+                               placeholder="0000"
+                               maxlength="4"
+                               inputmode="numeric" />
+                    </div>
+                </div>
+            </div>
+            <div id="tenantsResults" class="supplier-results mt-3"></div>
+        </div>
+    </div>
+</div>
+
+@await Html.PartialAsync("_Create_Tenants")
+@await Html.PartialAsync("_Update_Tenants")

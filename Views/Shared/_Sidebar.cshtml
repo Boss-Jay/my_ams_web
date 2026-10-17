@@ -1,9 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Http
+
 @inject IHttpContextAccessor HttpContextAccessor
 @{
-    var fullname = HttpContextAccessor.HttpContext?.Session.GetString("lastname")+", "+
+    var fullname = HttpContextAccessor.HttpContext?.Session.GetString("lastname") + ", " +
     HttpContextAccessor.HttpContext?.Session.GetString("firstname") + " " +
-    HttpContextAccessor.HttpContext?.Session.GetString("middlename")!.Substring(0,1)+".";
+    HttpContextAccessor.HttpContext?.Session.GetString("middlename")!.Substring(0, 1) + ".";
 }
 <aside class="app-sidebar" id="sidebar">
 
@@ -26,203 +27,9 @@
         </span>
     </div>
 
-    <div class="branch-container">
 
-
-        <span class="branch-label">
-
-            CURRENT BRANCH
-
-        </span>
-
-
-        <div class="branch-selector">
-
-
-            <!-- SELECTED BRANCH -->
-
-            <button type="button"
-                    class="branch-button"
-                    id="branchButton">
-
-
-                <div class="branch-icon">
-
-                    <i class="bi bi-building"></i>
-
-                </div>
-
-
-                <div class="branch-info">
-
-                    <span class="branch-title">
-                        Branch
-                    </span>
-
-                    <span class="branch-name"
-                          id="currentBranch">
-
-                        Cebu
-
-                    </span>
-
-                </div>
-
-
-                <i class="bi bi-chevron-down branch-arrow"></i>
-
-
-            </button>
-
-
-
-            <!-- BRANCH OPTIONS -->
-
-            <div class="branch-menu"
-                 id="branchMenu">
-
-
-                <!-- CEBU -->
-
-                <button type="button"
-                        class="branch-option selected"
-                        data-branch="Cebu">
-
-                    <div class="branch-option-icon">
-
-                        <i class="bi bi-building"></i>
-
-                    </div>
-
-                    <div class="branch-option-info">
-
-                        <div class="branch-option-name">
-
-                            Cebu
-
-                        </div>
-
-                        <div class="branch-option-location">
-
-                            Main Branch
-
-                        </div>
-
-                    </div>
-
-                    <i class="bi bi-check2 branch-check"></i>
-
-                </button>
-
-
-
-                <!-- MANDAUE -->
-
-                <button type="button"
-                        class="branch-option"
-                        data-branch="Mandaue">
-
-                    <div class="branch-option-icon">
-
-                        <i class="bi bi-building"></i>
-
-                    </div>
-
-                    <div class="branch-option-info">
-
-                        <div class="branch-option-name">
-
-                            Mandaue
-
-                        </div>
-
-                        <div class="branch-option-location">
-
-                            Mandaue Branch
-
-                        </div>
-
-                    </div>
-
-                    <i class="bi bi-check2 branch-check"></i>
-
-                </button>
-
-
-
-                <!-- LAPU-LAPU -->
-
-                <button type="button"
-                        class="branch-option"
-                        data-branch="Lapu-Lapu">
-
-                    <div class="branch-option-icon">
-
-                        <i class="bi bi-building"></i>
-
-                    </div>
-
-                    <div class="branch-option-info">
-
-                        <div class="branch-option-name">
-
-                            Lapu-Lapu
-
-                        </div>
-
-                        <div class="branch-option-location">
-
-                            Lapu-Lapu Branch
-
-                        </div>
-
-                    </div>
-
-                    <i class="bi bi-check2 branch-check"></i>
-
-                </button>
-
-
-
-                <!-- BOHOL -->
-
-                <button type="button"
-                        class="branch-option"
-                        data-branch="Bohol">
-
-                    <div class="branch-option-icon">
-
-                        <i class="bi bi-building"></i>
-
-                    </div>
-
-                    <div class="branch-option-info">
-
-                        <div class="branch-option-name">
-
-                            Bohol
-
-                        </div>
-
-                        <div class="branch-option-location">
-
-                            Bohol Branch
-
-                        </div>
-
-                    </div>
-
-                    <i class="bi bi-check2 branch-check"></i>
-
-                </button>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
+    <!-- DATABASE-DRIVEN BRANCH DROPDOWN -->
+    @await Component.InvokeAsync("BranchSidebar")
 
     <div class="sidebar-content">
 
@@ -232,7 +39,7 @@
             MAIN
 
         </div>
-        
+
 
         <!-- DASHBOARD -->
 
@@ -250,42 +57,30 @@
         <!-- MASTER DATA -->
 
         <div class="sidebar-group">
-
-
-            <button type="button"
-                    class="sidebar-item sidebar-dropdown">
-
+            <button type="button" class="sidebar-item sidebar-dropdown">
                 <i class="bi bi-database"></i>
-
                 <span>
                     Master Data
                 </span>
-
                 <i class="bi bi-chevron-right menu-arrow"></i>
-
             </button>
-
-
             <div class="submenu">
-
-
-                <a href="#"
+                <a asp-action="Supplier_Index" asp-controller="Supplier"
                    class="submenu-item">
-
-                    <i class="bi bi-truck"></i>
-
-                    <span>
-                        Supplier
-                    </span>
-
+                    <i class="bi bi-people"></i>
+                    <span>Supplier</span>
+                </a> 
+                <a asp-action="Tenants_Index" asp-controller="Tenants"
+                         class="submenu-item">
+                    <i class="bi bi-house-heart"></i>
+                    <span>Tenants</span>
                 </a>
             </div>
-
         </div>
-        <a href="#"
+        <a asp-action="ChartofAccounts_Index" asp-controller="ChartofAccounts"
            class="sidebar-item">
 
-            <i class="bi bi-clipboard2-data"></i>
+            <i class="bi bi-graph-up-arrow"></i>
 
             <span>
                 Chart of Accounts
@@ -456,25 +251,14 @@
                     <i class="bi bi-person"></i>
 
                     <span>
-                        User Account
+                        User Account & Access
                     </span>
 
                 </a>
 
-                <a asp-action="Access_Index" asp-controller="UserAccess"
+                <a asp-action="Branch_Index" asp-controller="Branch"
                    class="submenu-item">
-
-                    <i class="bi bi-sliders"></i>
-
-                    <span>
-                        User Access
-                    </span>
-
-                </a>
-                <a class="submenu-item">
-
-                    <i class="bi bi-share-fill"></i>
-
+                    <i class="bi bi-building-fill"></i>
                     <span>
                         Branch
                     </span>
@@ -501,7 +285,7 @@
             <i class="bi bi-box-arrow-right"></i>
 
             <span>
-               LOG OUT - @fullname 
+                LOG OUT - @fullname
             </span>
 
         </a>

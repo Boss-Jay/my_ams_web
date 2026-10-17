@@ -1,0 +1,125 @@
+﻿@using Ams_Web.Models;
+@model tenants_ViewModel
+
+<div class="modal fade"
+     id="updatetenants"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+        <div class="modal-container">
+            <div class="modal-wrapper">
+                <div class="card modal-content">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            New Tenants
+                        </h2>
+                        <p class="card-description">
+                            Enter the Tenant's  information .
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-section">
+                            <div class="section-title">
+                                <i class="bi bi-person-badge"></i>
+                                Tenants Information
+                            </div>
+                            <div class="form-grid">
+                                <!--Tenants Id-->
+                                <input type="text" id="uptenantsid" hidden/>
+                                <div class="form-group">
+                                    <label asp-for="_tenantsCreate.Tin"> </label>
+                                    <input type="text" class="gray-input"
+                                           id="uptenantstin"
+                                           placeholder="000-000-000"
+                                           maxlength="11"
+                                           inputmode="numeric" readonly />
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="_tenantsCreate.TinCode"> </label>
+                                    <input type="text" class="gray-input"
+                                           id="uptenantstincode"
+                                           placeholder="0000"
+                                           maxlength="4"
+                                           inputmode="numeric" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="_tenantsCreate.Type"> </label>
+                                <select class="w-100"
+                                        id="uptenantstypeid"
+                                        onchange="Create_Show_Selected_Tenants_Type()">
+                                    <option value=""></option>
+                                    <option value="1">Individual</option>
+                                    <option value="2">Corporation</option>
+                                </select>
+                            </div>
+                            <div id="uptenantsindividualdiv">
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label asp-for="_tenantsCreate.Firstname"> </label>
+                                        <input type="text" id="uptenantsfname"
+                                               placeholder="Juan" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="_tenantsCreate.Lastname"> </label>
+                                        <input type="text" id="uptenantslname"
+                                               placeholder="Dela Cruz" />
+                                    </div>
+                                </div>
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label asp-for="_tenantsCreate.Middlename"> </label>
+                                        <input type="text" id="uptenantsmname"
+                                               maxlength="1"
+                                               placeholder="Dela Cruz" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="uptenantscorporationdiv">
+                                <div class="form-group">
+                                    <label asp-for="_tenantsCreate.Corporation"> </label>
+                                    <input type="text" id="uptenantscorporation"
+                                           placeholder="Juan Corporation" />
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="_tenantsCreate.AddressDetails"> </label>
+                                <textarea type="text" placeholder="Looc" id="uptenantsaddress"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="_tenantsCreate.City"> </label>
+                                <input type="text" placeholder="Mandaue City" id="uptenantscity" />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="_tenantsCreate.Zipcode"> </label>
+                                <input type="text" class="w-25" id="uptenantszipcode"
+                                       maxlength="4" placeholder="6***" />
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <button type="button"
+                                    class="btn btn-outline-secondary"
+                                    data-bs-dismiss="modal">
+                                <i class="bi bi-x-circle me-1"></i>
+                                Cancel
+                            </button>
+                            <div id="uptenantssavebuttondiv">
+                                <button type="submit" id="btnupdatetenants"
+                                        onclick="Update_Tenants()"
+                                        class="btn btn-primary">
+                                    <i class="bi bi-person-fill-add"></i>
+                                    Update Tenants
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

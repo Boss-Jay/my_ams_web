@@ -3,6 +3,7 @@ using Ams_Web.Models;
 using Ams_Web.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Threading.Tasks;
 
 namespace Ams_Web.Controllers
 {
@@ -23,7 +24,8 @@ namespace Ams_Web.Controllers
             var user = new user_ViewModel
             {
                 _userTableList_Dto = await _api_Services.User_List_Table(),
-                _userDashboard_Dto = await _api_Services.Dashboard_Count()
+                _userDashboard_Dto = await _api_Services.Dashboard_Count(),
+                _accessModule_Dtos = await _api_Services.User_Module()
             };
             return View(user);
         }
@@ -80,6 +82,28 @@ namespace Ams_Web.Controllers
                 return BadRequest(result);
             }
             return Json(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> SaveModuleAccess([FromBody] accessUserAccess_Dto accessUserAccess_Dto)
+        {
+            var result = await _api_Services.Create_Access(accessUserAccess_Dto);
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+            return Json(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetModuleAccessStatus(int userId, int moduleId)
+        {
+            var access = await _api_Services.GetModuleAccessStatus(
+                userId, moduleId);
+
+            return Json(new
+            {
+                success = true,
+                hasAccess = access
+            });
         }
     }
 }

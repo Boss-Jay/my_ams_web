@@ -1,0 +1,126 @@
+﻿.supplier-page {
+    width: 100%;
+    min-width: 0;
+    padding: 24px;
+    color: #17233b;
+}
+
+.supplier-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 23px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #6366f1);
+    box-shadow: 0 5px 14px rgba(37, 99, 235, .18);
+}
+
+.supplier-card {
+    width: 100%;
+    max-width: 1000px;
+    max-height: 1000px;
+    margin: 30px auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+    .supplier-card .form-control {
+        height: 36px;
+        font-size: 13px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        padding: 8px 12px;
+        background-color: #ffffff;
+        color: #374151;
+        box-shadow: none;
+        transition: all 0.2s ease-in-out;
+    }
+
+
+.supplier-card .form-control::placeholder {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+.supplier-card .form-control:focus {
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+    outline: none;
+}
+
+.supplier-card .input-group-text {
+    height: 36px;
+    background-color: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-right: none;
+    border-radius: 6px 0 0 6px;
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.supplier-card .input-group .form-control {
+    border-radius: 0 6px 6px 0;
+}
+.supplier-card .card-body {
+    padding: 20px;
+}
+
+/* Responsive width */
+@media (max-width: 768px) {
+    .supplier-card {
+        width: 95%;
+        margin: 15px auto;
+    }
+}
+
+.supplier-container {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+
+.supplier-wrapper {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+.supplier-results {
+    max-height: 500px;
+    overflow-y: auto;
+    border-radius: 6px;
+}
+
+.supplier-result-item {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+    .supplier-result-item:hover,
+    .supplier-result-item:focus {
+        background-color: #f1f5f9;
+        outline: none;
+    }
+
+.supplier-result-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.supplier-result-item small {
+    display: block;
+    margin-top: 3px;
+    font-size: 11px;
+}
+.supplier-result-item .btn {
+    white-space: nowrap;
+}

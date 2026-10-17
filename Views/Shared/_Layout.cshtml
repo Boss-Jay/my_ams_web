@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Http
+
 @inject IHttpContextAccessor HttpContextAccessor
 @{
     var isLoggedIn = HttpContextAccessor.HttpContext?.Session.GetInt32("userid") != null;
@@ -21,6 +22,10 @@
     <link rel="stylesheet" href="~/Ams_Web.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Page.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/Change_Pass.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/Supplier.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/IndexPage.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ModalForm.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/ChartofAccounts.css" asp-append-version="true" />
 </head>
 <body>
     @if (!isLoggedIn)
@@ -45,12 +50,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     </script>
 
- 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/Login.js" asp-append-version="true"></script>
     <script src="~/js/User.js" asp-append-version="true"></script>
     <script src="~/js/Sidebar.js" asp-append-version="true"></script>
+    <script src="~/js/Branch.js" asp-append-version="true"></script>
+    <script src="~/js/Supplier.js" asp-append-version="true"></script>
+    <script src="~/js/Tenants.js" asp-append-version="true"></script>
+    <script src="~/js/ChartofAccounts.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

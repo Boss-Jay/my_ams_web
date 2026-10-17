@@ -1,0 +1,78 @@
+﻿@using Ams_Web.Models;
+@model chartofaccounts_ViewModel
+
+<div class="modal fade"
+     id="createaccounttitle"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+        <form asp-action="Create_Account" id="frmcreateaccounttitle">
+            <div class="modal-container">
+                <div class="modal-wrapper">
+                    <div class="card modal-content">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                New Account Title
+                            </h2>
+                            <p class="card-description">
+                                Enter the Account title information .
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="section-title">
+                                Account Information
+                            </div>
+                            <div class="form-grid">
+                                <div class="d-flex align-items-center gap-2">
+                                    <label> GL Account Code - </label>
+                                    <span id="coacoaid" class="fw-bold"></span>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label> Description </label>
+
+                                <input type="text" class="gray-input"
+                                       id="coacoadesc" readonly />
+                            </div>
+                            <hr/>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>New Account Code </label>
+                                    <input type="text" class="gray-input"
+                                           asp-for="_coaCreate_Dto.CoaId"
+                                           id="coasubcoaid" readonly />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>New Account Description </label>
+                                <input type="text" 
+                                       asp-for="_coaCreate_Dto.CoaDesc"/>
+                            </div>
+                        </div>
+
+
+                        <div class="card-footer">
+
+                            <button type="button"
+                                    class="btn btn-outline-secondary"
+                                    data-bs-dismiss="modal">
+                                <i class="bi bi-x-circle me-1"></i>
+                                Cancel
+                            </button>
+
+                            <button type="submit" id="btncreateaccounttitle"
+                                    class="btn btn-primary">
+                                <i class="bi bi-person-fill-add"></i>
+                                Add Account
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -219,12 +219,33 @@ body {
     box-shadow: 0 12px 30px rgba(15, 23, 42, .12);
     display: none;
     z-index: 3000;
+    max-height: 280px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
+
 
 
     .branch-menu.open {
         display: block;
     }
+    /* Custom scrollbar */
+    .branch-menu::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .branch-menu::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .branch-menu::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+    }
+
+        .branch-menu::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
 
 
 /* BRANCH OPTION */
@@ -297,6 +318,7 @@ body {
     display: block;
     background: linear-gradient( 135deg, #eff6ff, #f5f3ff );
 }
+
 
 
 .sidebar-content {

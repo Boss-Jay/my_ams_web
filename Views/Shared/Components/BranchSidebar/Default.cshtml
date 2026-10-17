@@ -1,0 +1,64 @@
+﻿@using Ams_Web.Dto;
+@model IEnumerable<branchListSidebar_Dto>
+@{
+    var lastBranchId = ViewBag.LastBranchId as int?;
+    var selectedBranch = Model.FirstOrDefault(
+        b => b.BranchId == lastBranchId)
+        ?? Model.FirstOrDefault();
+}
+<div class="branch-container">
+    <span class="branch-label">CURRENT BRANCH</span>
+
+    <div class="branch-selector">
+
+        <button type="button"
+                class="branch-button"
+                id="branchButton">
+
+            <div class="branch-icon">
+                <i class="bi bi-building"></i>
+            </div>
+
+            <div class="branch-info">
+                <span class="branch-title">Branch</span>
+
+                <span class="branch-name" id="currentBranch">
+                    @(selectedBranch?.Name ?? "Select Branch")
+                </span>
+            </div>
+
+            <i class="bi bi-chevron-down branch-arrow"></i>
+        </button>
+        <input type="hidden"
+               id="selectedBranchId"
+               value="@(selectedBranch?.BranchId ?? 0)" />
+        <div class="branch-menu" id="branchMenu">
+
+            @foreach (var branch in Model)
+            {
+                <button type="button"
+                        class="branch-option @(branch.BranchId == selectedBranch?.BranchId ? "selected" : "")"
+                        data-branch-id="@branch.BranchId"
+                        data-branch="@branch.Name">
+
+                    <div class="branch-option-icon">
+                        <i class="bi bi-building"></i>
+                    </div>
+
+                    <div class="branch-option-info">
+                        <div class="branch-option-name">
+                            @branch.Name
+                        </div>
+
+                        <div class="branch-option-location">
+                            @branch.Address
+                        </div>
+                    </div>
+
+                    <i class="bi bi-check2 branch-check"></i>
+                </button>
+            }
+
+        </div>
+    </div>
+</div>

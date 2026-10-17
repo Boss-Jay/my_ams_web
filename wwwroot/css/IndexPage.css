@@ -1,0 +1,67 @@
+﻿.index-page {
+    width: 100%;
+    min-width: 0;
+    padding: 24px;
+    color: #17233b;
+}
+.index-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 23px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #6366f1);
+    box-shadow: 0 5px 14px rgba(37, 99, 235, .18);
+}
+.index-card {
+    width: 100%;
+    max-width: 1000px;
+    max-height: 1000px;
+    margin: 30px auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+    .index-card .form-control {
+        height: 36px;
+        font-size: 13px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        padding: 8px 12px;
+        background-color: #ffffff;
+        color: #374151;
+        box-shadow: none;
+        transition: all 0.2s ease-in-out;
+    }
+        .index-card .form-control::placeholder {
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+        .index-card .form-control:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+            outline: none;
+        }
+
+    .index-card .input-group-text {
+        height: 36px;
+        background-color: #f9fafb;
+        border: 1px solid #d1d5db;
+        border-right: none;
+        border-radius: 6px 0 0 6px;
+        color: #6b7280;
+        font-size: 13px;
+    }
+
+    .index-card .input-group .form-control {
+        border-radius: 0 6px 6px 0;
+    }
+
+    .index-card .card-body {
+        padding: 20px;
+    }

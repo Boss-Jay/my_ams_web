@@ -1,0 +1,52 @@
+﻿@using Ams_Web.Models;
+@model chartofaccounts_ViewModel
+
+@{
+    ViewData["Title"] = "Chart of Accounts";
+}
+
+<div class="index-page">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div class="d-flex align-items-center gap-3">
+            <div class="index-icon">
+                <i class="bi bi-graph-up-arrow"></i>
+            </div>
+            <div>
+                <h5 class="fw-bold mb-1 text-uppercase">Chart of Accounts</h5>
+                <p class="text-secondary mb-0 fs-6">
+                    Accounts informations.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!--Chart of Accounts Table-->
+    <div class="card ">
+        <div class="table-responsive table-scroll" style="min-height: 800px">
+            <table class="table align-middle " id="coaTable">
+                <thead class="table-light">
+                    <tr>
+                        <th style="width: 180px;">Account Code</th>
+                        <th>Account Description</th>
+                        <th class="text-center pe-4">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var account in Model._coaTree_Dtos)
+                    {
+                        @await Html.PartialAsync(
+                        "_ChartofAccounts_Row",
+                                        account,
+                                        new ViewDataDictionary(ViewData)
+                                        {
+                                            ["Level"] = 0,
+                                            ["ParentId"] = null
+                                        })
+                                        }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@await Html.PartialAsync("_CreateAccountTitle")

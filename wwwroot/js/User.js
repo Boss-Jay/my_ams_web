@@ -1,27 +1,5 @@
 ﻿
 document.addEventListener("DOMContentLoaded", function () {
-/*    const firstName = document.getElementById("userfname");
-    const middlename = document.getElementById("usermname");
-    const lastName = document.getElementById("userlname");
-    const username = document.getElementById("userusername");
-
-    function generateUsername() {
-        const first = firstName.value.trim();
-        const last = lastName.value.trim();
-        const middle = middlename.value.trim();
-        if (first !== "" && last !== "") {
-            username.value = first.charAt(0).toLowerCase() + middle.charAt(0).toLowerCase() + last.toLowerCase();
-        } else {
-            username.value = "";
-        }
-    }
-    if (firstName)
-        firstName.addEventListener("input", generateUsername);
-    if (middlename)
-        middlename.addEventListener("input", generateUsername);
-    if (lastName)
-        lastName.addEventListener("input", generateUsername);*/
-
 
     const frmusercreate = document.getElementById("frmusercreate");
     const btnusercreate = document.getElementById("btnusercreate");
@@ -258,6 +236,23 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+    // Access Module
+    // Select or deselect all rows
+    $('#checkAllUsers').on('change', function () {
+        $('#userAccessTable tbody .row-checkbox')
+            .prop('checked', this.checked);
+    });
+
+    // Update header checkbox when individual rows change
+    $('#userAccessTable').on('change', '.row-checkbox', function () {
+        const total = $('#userAccessTable tbody .row-checkbox').length;
+        const checked = $('#userAccessTable tbody .row-checkbox:checked').length;
+
+        $('#checkAllUsers')
+            .prop('checked', total > 0 && total === checked)
+            .prop('indeterminate', checked > 0 && checked < total);
+    });
 });
 function Get_User(Id) {
     // alert(id);
@@ -450,6 +445,7 @@ function Get_User_Access(Id) {
                     .trim()
             );
             openuseraccessModal();
+            LoadModuleAccess(Id);
         },
         error: function () {
             Swal.fire(
@@ -459,3 +455,106 @@ function Get_User_Access(Id) {
         }
     });
 };
+
+function Save_Access() {
+
+    const userId = Number($('#accessuserid').val());
+
+    const moduleIds = [];
+    const hasAccess = [];
+
+    $('#userAccessTable .row-checkbox').each(function () {
+
+        const value = $(this).val();
+        const id = Number(value);
+
+        if (value !== undefined &&
+            value.trim() !== '' &&
+            Number.isInteger(id) &&
+            id > 0) {
+
+            moduleIds.push(id);
+
+            // Checked = 1, unchecked = 0
+            hasAccess.push($(this).is(':checked') ? 1 : 0);
+        }
+    });
+
+    if (!Number.isInteger(userId) || userId <= 0) {
+        Swal.fire('Error', 'Invalid User ID.', 'error');
+        return;
+    }
+
+    if (moduleIds.length === 0) {
+        Swal.fire('Warning', 'No modules available.', 'warning');
+        return;
+    }
+
+    const requestData = {
+        userId: userId,
+        moduleId: moduleIds,
+        hasAccess: hasAccess
+    };
+
+   // console.log('Request data:', requestData);
+
+    $.ajax({
+        url: '/User/SaveModuleAccess',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(requestData),
+
+        success: function (result) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Access Successfully Updated!',
+                text: result.message,
+                showConfirmButton: false,
+                timer: 1000
+            }).then(() => {
+                // Redirect after success
+                window.location.href = '/User/User_Index';
+            });
+        },
+
+        error: function (xhr) {
+            Swal.fire(
+                'Error',
+                xhr.responseJSON?.message ||
+                'Failed to save module access.',
+                'error'
+            );
+        }
+    });
+}
+function LoadModuleAccess(userId) {
+
+    $('#userAccessTable .row-checkbox').prop('checked', false);
+
+    $('#userAccessTable .row-checkbox').each(function () {
+
+        const checkbox = $(this);
+        const moduleId = Number(checkbox.val());
+
+        $.ajax({
+            url: '/User/GetModuleAccessStatus',
+            type: 'GET',
+            data: {
+                userId: userId,
+                moduleId: moduleId
+            },
+            success: function (response) {
+
+                const hasAccess = Number(response.hasAccess);
+
+                checkbox.prop('checked', hasAccess === 1);
+            },
+            error: function (xhr) {
+                console.error(
+                    `Failed to retrieve access for module ${moduleId}`,
+                    xhr
+                );
+            }
+        });
+    });
+}
