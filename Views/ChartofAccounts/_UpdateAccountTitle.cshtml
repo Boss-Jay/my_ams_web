@@ -1,0 +1,58 @@
+﻿
+
+<div class="modal fade"
+     id="updateaccounttitle"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+        <div class="modal-container">
+            <div class="modal-wrapper">
+                <div class="card modal-content">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            Update Account Title 
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="section-title">
+                            Account Information
+                        </div>
+                        <div class="form-grid">
+                            <div class="d-flex align-items-center gap-2">
+                                <label> GL Account Code - </label>
+                                <span id="upcoaidtext" class="fw-bold"></span>
+                                <input type="text" 
+                                       id="upcoaidval" hidden />
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label> Description </label>
+
+                            <input type="text" 
+                                   id="upcoadesc" />
+                        </div>
+                    </div>
+                    <div class="card-footer">
+
+                        <button type="button"
+                                class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-1"></i>
+                            Cancel
+                        </button>
+
+                        <button type="submit" 
+                                class="btn btn-primary"
+                                onclick="Update_Account()">
+                            <i class="bi bi-person-fill-add"></i>
+                            Update Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -426,6 +426,7 @@ select {
 
 .stat-card,
 .branch-card,
+.bodofficer-card,
 .user-card {
     border: 1px solid #e7ecf4;
     border-radius: 12px;
@@ -447,7 +448,7 @@ select {
     font-size: 22px;
 }
 
-.user-card, .branch-card {
+.user-card, .branch-card, .bodofficer-card {
     overflow: hidden;
 }
 
@@ -466,12 +467,12 @@ select {
     }
 
 .user-table,
-
-.branch-table{
+.bodofficer-table,
+.branch-table {
     white-space: nowrap;
 }
 
-    .user-table  thead th {
+    .user-table thead th {
         padding-top: 15px;
         padding-bottom: 15px;
         background: #f7f9fd;
@@ -483,6 +484,7 @@ select {
         border-bottom: 1px solid #e8edf5;
     }
 
+
     .user-table tbody td {
         padding-top: 16px;
         padding-bottom: 16px;
@@ -491,6 +493,30 @@ select {
     }
 
     .user-table tbody tr:hover > * {
+        background: #f8faff;
+    }
+
+    .bodofficer-table thead th {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        background: #f7f9fd;
+        color: #64748b;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #e8edf5;
+    }
+
+
+    .bodofficer-table tbody td {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        font-size: 13px;
+        border-color: #edf0f5;
+    }
+
+    .bodofficer-table tbody tr:hover > * {
         background: #f8faff;
     }
 

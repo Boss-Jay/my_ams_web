@@ -1,0 +1,71 @@
+﻿@using Ams_Web.Models;
+@model bodofficer_ViewModel
+
+<div class="modal fade"
+     id="bodofficerallowance"
+     tabindex="-1"
+     aria-hidden="true"
+     data-bs-backdrop="static"
+     data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
+        <div class="modal-container">
+            <div class="modal-wrapper">
+                <div class="card modal-content">
+                    <div class="card modal-header">
+                        <h2 class="card-title">
+                            <span class="text-uppercase" id="allowancename"></span> - Allowance
+                        </h2>
+                        <p class="card-description">
+                            Edit BOD / Officer Monhtly and Yearly Allowances .
+                        </p>
+                    </div>
+
+                    <input id="allowancebodofficerid" hidden />
+                    <div class="card-body">
+                        <div class="form-section">
+                            <div class="form-group">
+                                <label >Select Year</label>
+                                <select asp-items="ViewBag.vbbodofficeryear" class="w-25"
+                                    id="selallowanceyear"
+                                        onclick="LoadAllowance_Data()">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="table-responsive accesstable-scroll" >
+
+                            <table class="table table-hover table-borderless user-table align-middle" id="allowancetable" >
+
+                                <thead class="table-light sticky-top">
+                                    <tr>
+                                        <th>#</th>
+                                        <th style="width:100%;">Date</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="allowanceTableBody">
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button"
+                                class="btn btn-outline-secondary"
+                                data-bs-dismiss="modal">
+                            <i class="bi bi-x-circle me-1"></i>
+                            Cancel
+                        </button>
+                        <button type="submit"
+                                class="btn btn-primary"
+                                onclick="Add_Allowance()">
+                     
+                            Save Allowance
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

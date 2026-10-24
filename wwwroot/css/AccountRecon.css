@@ -1,0 +1,284 @@
+﻿.recon-page {
+    width: 100%;
+    min-width: 0;
+    padding: 24px;
+    color: #17233b;
+}
+
+.recon-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    color: #fff;
+    font-size: 23px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #2563eb, #6366f1);
+    box-shadow: 0 5px 14px rgba(37, 99, 235, .18);
+}
+
+.recon-card {
+    width: 90%;
+    max-width: 1000px;
+    max-height: 1000px;
+    margin: 10px auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+    .recon-card .form-group {
+        flex: 1 1 0;
+        min-width: 100px;
+    }
+
+    .recon-card .form-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: #4b5563;
+        margin-bottom: 5px;
+    }
+
+    .recon-card .search-field {
+        width: 50%;
+        flex: 0 0 50%;
+        min-width: 250px;
+    }
+
+        .recon-card .search-field .form-control {
+            width: 100%;
+        }
+
+    .recon-card .form-control {
+        height: 33px;
+        font-size: 13px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        padding: 8px 12px;
+        background-color: #ffffff;
+        color: #374151;
+        box-shadow: none;
+        transition: all 0.2s ease-in-out;
+    }
+
+        .recon-card .form-control:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+        }
+    /* Custom Radio Button */
+    .recon-card .form-check-input {
+        width: 15px;
+        height: 15px;
+        border: 2px solid #9ca3af;
+        border-radius: 50% !important;
+        cursor: pointer;
+        margin-top: 3px;
+        transition: all 0.2s ease;
+    }
+
+        /* Selected Radio Button */
+        .recon-card .form-check-input:checked {
+            background-color: #2563eb;
+            border-color: #2563eb;
+        }
+        /* Focus Effect */
+        .recon-card .form-check-input:focus {
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+    /* Radio Label */
+    .recon-card .form-check-label {
+        font-size: 12px;
+        color: #374151;
+        cursor: pointer;
+        margin-left: 4px;
+        transition: color 0.2s ease;
+    }
+
+    /* Hover Effect */
+    .recon-card .form-check:hover .form-check-label {
+        color: #2563eb;
+    }
+
+    /* Selected Label */
+    .recon-card .form-check-input:checked + .form-check-label {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+#btnSearchTransaction {
+    height: 38px;
+    padding: 0 18px;
+    font-size: 14px;
+    white-space: nowrap;
+    border-radius: 6px;
+}
+
+.btn-clear-input {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px;
+    display: none;
+}
+
+    .btn-clear-input:hover {
+        color: #dc3545;
+    }
+
+.recon-results {
+    max-height: 500px;
+    overflow-y: auto;
+    border-radius: 6px;
+}
+
+.recon-result-item {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+    .recon-result-item:hover,
+    .recon-result-item:focus {
+        background-color: #f1f5f9;
+        outline: none;
+    }
+
+.recon-result-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.recon-result-item small {
+    display: block;
+    margin-top: 3px;
+    font-size: 11px;
+}
+
+.recon-result-item .btn {
+    white-space: nowrap;
+}
+/* Tablet screens */
+@media (max-width: 575.98px) {
+    .recon-card .card-body {
+        padding: 12px;
+    }
+
+    .recon-card .d-flex.gap-4 {
+        gap: 12px !important;
+    }
+}
+
+.transaction-card {
+    width: 100%;
+    max-width: 1000px;
+    margin: 15px auto;
+}
+
+    .transaction-card .card-body {
+        padding: 10px;
+    }
+    .transaction-card hr {
+        margin: 8px 0;
+    }
+
+.transaction-container {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    gap: 10px;
+}
+
+
+
+.transaction-column {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Consistent row height and vertical alignment */
+.field-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 35px;
+    margin: 0;
+}
+    .field-row .form-check {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin: 0;
+    }
+
+    .field-row .form-check-input {
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .field-row .form-check-label {
+        font-size: 11px;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+
+/* Consistent label alignment */
+.field-label {
+    width: 125px;
+    min-width: 125px;
+    flex-shrink: 0;
+    text-align: right;
+    margin: 0;
+    font-size: 11px;
+}
+
+/* Consistent input size */
+.field-input {
+    width: 150px;
+    min-width: 150px;
+    height: 30px;
+    flex-shrink: 0;
+    font-size: 11px;
+}
+
+/* Branch label */
+.branch-label {
+    width: auto;
+    min-width: auto;
+    text-align: left;
+}
+
+/* Right column alignment */
+.transaction-column.right .field-row {
+    justify-content: flex-end;
+}
+
+.transaction-column.left .field-row {
+    justify-content: flex-start;
+}
+
+/* Responsive layout */
+@media (max-width: 767px) {
+    .transaction-container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .transaction-column {
+        width: 100%;
+        flex: auto;
+    }
+
+        .transaction-column.right .field-row {
+            justify-content: flex-start;
+        }
+}

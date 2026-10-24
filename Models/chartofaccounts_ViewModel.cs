@@ -6,5 +6,6 @@ namespace Ams_Web.Models
     {
         public List<coaTree_Dto> _coaTree_Dtos {  get; set; } = new List<coaTree_Dto>();
         public coaCreate_Dto _coaCreate_Dto { get; set; } = new();
+        public coaUpdate_Dto _coaUpdate_Dto  { get; set; } = new();
     }
 }

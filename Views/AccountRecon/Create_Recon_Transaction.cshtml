@@ -1,0 +1,380 @@
+﻿@using Ams_Web.Models;
+@model accountrecon_ViewModel
+@{
+    ViewData["Title"] = "Transaction";
+}
+<div class="recon-page">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div class="d-flex align-items-center gap-3">
+
+            <div>
+                <h6 class="fw-bold mb-1 text-uppercase">New Transaction</h6>
+            </div>
+        </div>
+    </div>
+
+    <div class="card transaction-card">
+        <div class="card-body">
+
+            <div class="transaction-container">
+
+                <!-- Left Column -->
+                <div class="transaction-column left">
+                    <div class="field-row">
+                    </div>
+
+                    <div class="field-row">
+                        <label for="TransactionType" class="field-label">
+                            Supplier Name :
+                        </label>
+
+                        <input type="text"
+                               id="TransactionDate"
+                               class=" field-input w-50">
+                        <a class="btn btn-info btn-sm"><i class="bi bi-search"></i></a>
+                    </div>
+
+                    <div class="field-row">
+                        <label for="TransactionType" class="field-label">
+                            Corporation :
+                        </label>
+
+                        <input type="text"
+                               id="TransactionDate"
+                               class=" field-input w-50 gray-input">
+                    </div>
+                    <div class="field-row">
+                        <label for="TransactionType" class="field-label">
+                            Address :
+                        </label>
+
+                        <input type="text"
+                               id="TransactionDate"
+                               class=" field-input w-100 gray-input">
+                    </div>
+                    <div class="field-row">
+                        <label for="TransactionType" class="field-label">
+                            Zipcode :
+                        </label>
+
+                        <input type="text"
+                               id="TransactionDate"
+                               class=" field-input w-25 gray-input">
+                    </div>
+                    <div class="field-row">
+                        <label for="TransactionType" class="field-label">
+                            Tax Regitered :
+                        </label>
+
+                        <input type="text"
+                               id="TransactionDate"
+                               class=" field-input w-25 gray-input">
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <div class="transaction-column right">
+                    <div class="field-row">
+                        <label class="field-label">
+                            Branch :
+                        </label>
+
+                        <input type="text"
+                               id="TransactionDate"
+                               class=" field-input" value="Head Office">
+                    </div>
+                    <div class="field-row">
+                        <label for="TransactionDate" class="field-label">
+                            Transaction Date :
+                        </label>
+
+                        <input type="date"
+                               id="TransactionDate"
+                               name="TransactionDate"
+                               class=" field-input">
+                    </div>
+                    <div class="field-row">
+                        <label for="TransactionDate" class="field-label">
+                            Invoice Date :
+                        </label>
+
+                        <input type="date"
+                               id="TransactionDate"
+                               name="TransactionDate"
+                               class=" field-input">
+                    </div>
+
+                    <div class="field-row">
+                        <label for="Month" class="field-label">
+                            Month :
+                        </label>
+
+                        <select id="Month"
+                                name="Month"
+                                class="form-select field-input">
+                            <option value="">Select Month</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+
+                    <div class="field-row">
+                        <label for="Year" class="field-label">
+                            Year :
+                        </label>
+
+                        <input type="number"
+                               id="Year"
+                               name="Year"
+                               class=" field-input">
+                    </div>
+                    <div class="field-row">
+                        <label for="Year" class="field-label">
+                            Source Document :
+                        </label>
+
+                        <select type="number"
+                                id="Year"
+                                name="Year"
+                                class=" field-input w-25"></select>
+                        <input type="number"
+                               id="Year"
+                               name="Year"
+                               class=" field-input">
+                    </div>
+                    <div class="field-row">
+                        <label for="Year" class="field-label">
+                            Support Document :
+                        </label>
+
+                        <select type="number"
+                                id="Year"
+                                name="Year"
+                                class=" field-input w-25"></select>
+                        <input type="number"
+                               id="Year"
+                               name="Year"
+                               class=" field-input">
+                    </div>
+                </div>
+
+            </div>
+            <hr />
+            <div>
+                <div class="transaction-container">
+                    <div class="transaction-column left mb-0">
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                Account Title :
+                            </label>
+
+                            <input type="text"
+                                   id="TransactionDate"
+                                   class=" field-input w-100">
+                        </div>
+                    </div>
+                    <div class="transaction-column right mb-0">
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                Transportation Mode:
+                            </label>
+
+                            <select type="number"
+                                    id="Year"
+                                    name="Year"
+                                    class=" field-input w-auto"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="transaction-container">
+                    <div class="transaction-column left mb-2">
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                Goods & Services :
+                            </label>
+
+                            <select type="number"
+                                    id="Year"
+                                    name="Year"
+                                    class=" field-input w-auto"></select>
+                            <input class="form-check-input"
+                                   type="checkbox"
+                                   id="Check1">
+                            <label class="form-check-label" for="Check1">
+                                Adviced
+                            </label>
+                            <input class="form-check-input"
+                                   type="checkbox"
+                                   id="Check1">
+                            <label class="form-check-label" for="Check1">
+                                Amortized
+                            </label>
+                        </div>
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                ATC :
+                            </label>
+
+                            <select type="number"
+                                    id="Year"
+                                    name="Year"
+                                    class=" field-input w-25"></select>
+
+                            <input class="form-check-input"
+                                   type="checkbox"
+                                   id="Check1">
+                            <label class="form-check-label" for="Check1">
+                                No Tax WithHeld
+                            </label>
+                            <input class="form-check-input"
+                                   type="checkbox"
+                                   id="Check1">
+                            <label class="form-check-label" for="Check1">
+                                Pass On
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="transaction-column right">
+                        <div class="field-row">
+                        </div>
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                Rate :
+                            </label>
+
+                            <input type="text"
+                                   id="TransactionDate"
+                                   class=" field-input w-25 gray-input">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="transaction-container">
+                    <div class="transaction-column left mb-0">
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                Gross Amount :
+                            </label>
+
+                            <input type="text"
+                                   id="TransactionDate"
+                                   class=" field-input w-25">
+                        </div>
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                Exempt Amount :
+                            </label>
+
+                            <input type="text"
+                                   id="TransactionDate"
+                                   class=" field-input w-25">
+                        </div>
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                VAT Others :
+                            </label>
+
+                            <input type="text"
+                                   id="TransactionDate"
+                                   class=" field-input w-25">
+                        </div>
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                Input Tax Claim :
+                            </label>
+
+                            <input type="text"
+                                   id="TransactionDate"
+                                   class=" field-input w-25">
+                        </div>
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                Attachment Description :
+                            </label>
+
+                            <select type="number"
+                                    id="Year"
+                                    name="Year"
+                                    class=" field-input w-100"></select>
+                        </div>
+                    </div>
+                    <div class="transaction-column right ">
+                        <div class="field-row">
+                        </div>
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                Taxable :
+                            </label>
+
+                            <input type="text"
+                                   id="TransactionDate"
+                                   class=" field-input w-25 gray-input">
+                        </div>
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                VAT 12% :
+                            </label>
+
+                            <input type="text"
+                                   id="TransactionDate"
+                                   class=" field-input w-25 gray-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="transaction-container">
+                    
+                    <div class="transaction-column right ">
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                 WithHolding Tax:
+                            </label>
+
+                            <input type="text"
+                                   id="TransactionDate"
+                                   class=" field-input w-auto gray-input">
+                        </div>
+                        <div class="field-row">
+                            <label for="TransactionType" class="field-label">
+                                Total :
+                            </label>
+
+                            <input type="text"
+                                   id="TransactionDate"
+                                   class=" field-input w-auto gray-input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-2 text-end">
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Submit
+                </button>
+                <button type="reset" class="btn btn-secondary">
+                    Clear
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -6,7 +6,7 @@
      tabindex="-1"
      aria-hidden="true"
      data-bs-backdrop="static"
-     data-bs-keyboard="false">
+     data-bs-keyboard="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable ">
         <form asp-action="Create_Account" id="frmcreateaccounttitle">
             <div class="modal-container">
@@ -28,6 +28,8 @@
                                 <div class="d-flex align-items-center gap-2">
                                     <label> GL Account Code - </label>
                                     <span id="coacoaid" class="fw-bold"></span>
+                                      <input type="text" class="gray-input"
+                                           asp-for="_coaCreate_Dto.SubCoaId" id="coasubcoaid" hidden/>
                                 </div>
 
                             </div>
@@ -42,8 +44,8 @@
                                 <div class="form-group">
                                     <label>New Account Code </label>
                                     <input type="text" class="gray-input"
-                                           asp-for="_coaCreate_Dto.CoaId"
-                                           id="coasubcoaid" readonly />
+                                           asp-for="_coaCreate_Dto.NewCoaId"
+                                           id="coanewcoaid" readonly />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -52,8 +54,10 @@
                                        asp-for="_coaCreate_Dto.CoaDesc"/>
                             </div>
                         </div>
-
-
+                        <input type="text"
+                               asp-for="_coaCreate_Dto.Type" id="coacoatype" hidden />
+   
+         
                         <div class="card-footer">
 
                             <button type="button"

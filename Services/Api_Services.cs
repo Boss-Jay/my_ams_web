@@ -2,6 +2,7 @@
 using Ams_Web.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Http.Headers;
+using System.Reflection;
 
 namespace Ams_Web.Services
 {
@@ -489,6 +490,27 @@ namespace Ams_Web.Services
                     : errorMessage
             };
         }
+        public async Task<Api_Response> Update_Account(int? coaid,coaUpdate_Dto _Dto)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"api/coa/update-account?coaid={coaid}", _Dto);
+            if (response.IsSuccessStatusCode)
+            {
+                return new Api_Response
+                {
+                    Success = true
+                };
+            }
+
+            var errorMessage = await response.Content.ReadAsStringAsync();
+
+            return new Api_Response
+            {
+                Success = false,
+                Message = string.IsNullOrWhiteSpace(errorMessage)
+                    ? $"API returned HTTP {(int)response.StatusCode}."
+                    : errorMessage
+            };
+        }
         public async Task<int?> Get_Max_Accnt_Code(int coaid, int level)
         {
             var response = await _httpClient.GetAsync(
@@ -500,7 +522,121 @@ namespace Ams_Web.Services
 
             return result?.MaxAccount;
         }
+        // BOD Officer
+        public async Task<List<bodofficerList_Dto>> BodOfficer_List()
+        {
+            var response = await _httpClient.GetAsync($"api/bodofficer/bodofficer-list");
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadFromJsonAsync<List<bodofficerList_Dto>>()
+                ?? new List<bodofficerList_Dto>();
+        }
+        public async Task<Api_Response> Create_BodOfficer(bodofficerCreate_Dto _Dto)
+        {
+            var response = await _httpClient.PostAsJsonAsync("api/bodofficer/create-bodofficer", _Dto);
 
+            if (response.IsSuccessStatusCode)
+            {
+                return new Api_Response
+                {
+                    Success = true
+                };
+            }
+
+            var errorMessage = await response.Content.ReadAsStringAsync();
+
+            return new Api_Response
+            {
+                Success = false,
+                Message = string.IsNullOrWhiteSpace(errorMessage)
+                    ? $"API returned HTTP {(int)response.StatusCode}."
+                    : errorMessage
+            };
+        }
+        public async Task<Api_Response> Update_BodOfficer(int? Id, bodofficerUpdate_Dto _Dto)
+        {
+            var response = await _httpClient.PutAsJsonAsync($"api/bodofficer/update-bodofficer?Id={Id}", _Dto);
+            if (response.IsSuccessStatusCode)
+            {
+                return new Api_Response
+                {
+                    Success = true
+                };
+            }
+
+            var errorMessage = await response.Content.ReadAsStringAsync();
+
+            return new Api_Response
+            {
+                Success = false,
+                Message = string.IsNullOrWhiteSpace(errorMessage)
+                    ? $"API returned HTTP {(int)response.StatusCode}."
+                    : errorMessage
+            };
+        }
+        // BOF OFFICER Allowance
+        public async Task<decimal> BodOfficerAllowance_List(int BodOfficerId, int Year, int Month)
+        {
+            var response = await _httpClient.GetAsync(
+              $"api/bodofficer/get-allowance-by-id?BodOfficerId={BodOfficerId}&Year={Year}&Month={Month}");
+
+            response.EnsureSuccessStatusCode();
+
+            var content = await response.Content.ReadAsStringAsync();
+
+            if (string.IsNullOrWhiteSpace(content))
+            {
+                return 0m;
+            }
+
+            var result = System.Text.Json.JsonSerializer
+                .Deserialize<decimal>(content);
+
+            return result;
+        }
+        public async Task<List<int>> Get_BodOfficerYear_List()
+        {
+            return await _httpClient.GetFromJsonAsync<List<int>>("api/bodofficer/get-allowance-year")
+          ?? new List<int>();
+        }
+        public async Task<Api_Response> Add_Allowance(bodofficerallowanceCreate_Dto _Dto)
+        {
+
+            var response = await _httpClient.PostAsJsonAsync("api/bodofficer/add-allowance", _Dto);
+            if (response.IsSuccessStatusCode)
+            {
+                return new Api_Response
+                {
+                    Success = true
+                };
+            }
+
+            var result = await response.Content.ReadFromJsonAsync<Api_Response>();
+
+            return result ?? new Api_Response
+            {
+                Success = false,
+                Message = $"API returned HTTP {(int)response.StatusCode}, " +
+                $"{response.ReasonPhrase ?? "Unknown error"}."
+            };
+        }
+
+        // Account Reconciliation
+        public async Task<List<accountreconSearch_Dto>> Search_AccountRecon(int? BranchId, int? TransType,
+            string? SearchItem,
+            DateTime? _datefrom, DateTime? _dateto)
+        {
+            var response = await _httpClient.GetAsync(
+                $"api/accntrecon/recon-get-search?BranchId={BranchId}" +
+                $"&TransType={TransType}" +
+                $"&SearchItem={SearchItem}" +
+                $"&_datefrom={_datefrom}" +
+                $"&_dateto={_dateto}");
+
+            response.EnsureSuccessStatusCode();
+
+            return await response.Content.ReadFromJsonAsync<List<accountreconSearch_Dto>>()
+                   ?? new List<accountreconSearch_Dto>();
+        }
     }
 
 }

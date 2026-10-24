@@ -38,28 +38,27 @@
             }
 
             @Model.CoaDesc
+       @*      @Model.Level
+            @Model.Type *@
         </span>
     </td>
-    <td class="text-center pe-4">
-        <a data-bs-toggle="modal"
-           data-bs-target="#editaccountitle"
-           id="btneditaccounttitle"
-         
-           class="btn btn-sm btn-light action-btn"
+    <td class="text-center pe-4 ">
+        <a 
+           data-upcoaid="@Model.CoaId"
+           data-upaccount-desc="@Model.CoaDesc"
+           class="btn btn-sm btn-light action-btn open-update-account"
            title="Edit Account">
             <i class="bi bi-pencil-square"></i>
         </a>
-        <a @* data-bs-toggle="modal"
-           data-bs-target="#createaccounttitle" *@
-           id="btncreateaccounttitle"
-           class="btn btn-sm btn-light action-btn open-account"
+        @if (level != 2)
+        {
+            <a class="btn btn-sm btn-light action-btn open-account"
            data-coaid="@Model.CoaId"
            data-account-desc="@Model.CoaDesc"
-           data-level="@Model.Level"
-           
+           data-type="@Model.Type"
            title="Add Sub Account Title">
             <i class="bi bi-file-earmark-plus"></i>
-        </a>
+        </a>}
     </td>
 </tr>
 

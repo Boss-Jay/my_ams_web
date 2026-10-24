@@ -42,6 +42,15 @@ namespace Ams_Web.Services
         Task<coaList_Dto> Get_ChartofAccounts(int? coaid);
         Task<Api_Response> Create_Account(coaCreate_Dto _Dto);
         Task<int?> Get_Max_Accnt_Code(int coaid, int level);
-
+        Task<Api_Response> Update_Account(int? coaid, coaUpdate_Dto _Dto);
+        Task<List<bodofficerList_Dto>> BodOfficer_List();
+        Task<Api_Response> Create_BodOfficer(bodofficerCreate_Dto _Dto);
+        Task<Api_Response> Update_BodOfficer(int? Id, bodofficerUpdate_Dto _Dto);
+        Task<decimal> BodOfficerAllowance_List(int BodOfficerId, int Year, int Month);
+        Task<List<int>> Get_BodOfficerYear_List();
+        Task<Api_Response> Add_Allowance(bodofficerallowanceCreate_Dto _Dto);
+        Task<List<accountreconSearch_Dto>> Search_AccountRecon(int? BranchId, int? TransType,
+            string? SearchItem,
+            DateTime? _datefrom, DateTime? _dateto);
     }
 }

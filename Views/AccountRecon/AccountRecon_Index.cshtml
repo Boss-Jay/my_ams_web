@@ -1,0 +1,86 @@
+﻿@using Ams_Web.Models;
+@model accountrecon_ViewModel
+
+@{
+    ViewData["Title"] = "Account Reconciliation";
+}
+
+<div class="recon-page">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+        <div class="d-flex align-items-center gap-3">
+            <div class="recon-icon">
+                <i class="bi bi-ticket-detailed"></i>
+            </div>
+            <div>
+                <h5 class="fw-bold mb-1 text-uppercase">Account Reconciliation</h5>
+                <p class="text-secondary mb-0 fs-6">
+                    Manage Account Reconciliation Transctions.
+                </p>
+            </div>
+        </div>
+        <a asp-action="Create_Recon_Transaction" asp-controller="AccountRecon"
+           class="btn btn-primary px-4">
+            <i class="bi bi-plus-lg me-2"></i>Add New Transaction
+        </a>
+    </div>
+    <div class="card recon-card">
+        <div class="card-body">
+            <div class="d-flex justify-content-start align-items-center mb-0">
+                <p class="text-secondary mb-0 fs-6">
+                    Filter Transaction to Search.
+                </p>
+            </div>
+            
+            <div class="d-flex ">
+                <div class="form-group flex-fill">
+                    <label class="form-label">Transaction Type</label>
+                    <select class="w-25" id="recontranstype">
+                        <option value="">All Transaction</option>
+                        <option value="1">Board of Directors</option>
+                        <option value="2">Officer</option>
+                        <option value="3">PCF</option>
+                    </select>
+                </div>
+            </div>
+            <div class="d-flex flex-wrap align-items-end gap-3 w-100 ">
+              
+                <div class="form-group search-field">
+                    <label  class="form-label">Search</label>
+
+                    <div class="position-relative">
+                        <input type="text"
+                               id="reconsearchitem"
+                               class="form-control pe-5"
+                               placeholder="Enter keyword..." />
+
+                        <button type="button"
+                                id="btnClearSearch"
+                                class="btn-clear-input"
+                                title="Clear search"
+                                aria-label="Clear search">
+                            <i class="bi bi-x-circle-fill"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group flex-fill">
+                    <label  class="form-label">Date From</label>
+                    <input type="date"
+                           id="recondatefrom"
+                           name="dateFrom"
+                           class="form-control w-auto" />
+                </div>
+
+                <div class="form-group flex-fill">
+                    <label  class="form-label">Date To</label>
+                    <input type="date"
+                           id="recondateto"
+                           name="dateTo"
+                           class="form-control" />
+                </div>
+               
+            </div>
+            <div id="accountreconResults" class="recon-results mt-3"></div>
+        </div>
+    </div>
+</div>
